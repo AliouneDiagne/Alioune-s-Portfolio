@@ -68,4 +68,5 @@ CSS per lo stile.
 JavaScript per l’interattività.
 Come Usare il Progetto
 Scarica o clona questo repository: https://github.com/AliouneDiagne/Alioune-s-Portfolio.git
+Apri il file index.html con un browser per vedere il sito.
 
