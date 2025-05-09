@@ -1,72 +1,79 @@
 # Alioune-s-Portfolio   https://aliouportfoglio.tiiny.site
-Aliou Portfolio
-Benvenuto nel mio progetto di portfolio personale!
-Questo sito web è stato creato per mostrare chi sono, i miei progetti e permettere alle persone di contattarmi. È stato realizzato con HTML, CSS e JavaScript.
 
-Descrizione
-Il portfolio è un sito multipagina che include:
+Il mio portfolio personale, progettato per presentare il mio profilo professionale, mettere in mostra i miei progetti e offrire un canale diretto di contatto. Realizzato con HTML5, CSS3 e JavaScript.
 
-Chi sono: Una pagina con informazioni personali.
-Progetti: Una sezione dedicata ai miei lavori.
-Contatti: Un modulo per mettersi in contatto con me.
-L’obiettivo è creare un sito professionale, semplice da navigare e adatto a tutti i dispositivi.
+---
 
-Struttura del Progetto
-Il progetto è organizzato così:
-AliouPortfolio/
+## Indice
 
-├── css/
-│   └── style.css        # Stile del sito
-├── js/
-│   └── script.js        # Funzioni interattive
-├── images/              # Cartella delle immagini
-├── index.html           # Pagina Home
-├── about.html           # Pagina About Me
-├── projects.html        # Pagina Progetti
-├── contact.html         # Pagina Contatti
+- [Descrizione](#descrizione)  
+- [Struttura del progetto](#struttura-del-progetto)  
+- [Funzionalità principali](#funzionalità-principali)  
+- [Tecnologie utilizzate](#tecnologie-utilizzate)  
+- [Avvio rapido](#avvio-rapido)  
+- [Contatti](#contatti)  
 
-Ecco una versione del README più semplice e diretta:
+---
 
-Aliou Portfolio
-Benvenuto nel mio progetto di portfolio personale!
-Questo sito web è stato creato per mostrare chi sono, i miei progetti e permettere alle persone di contattarmi. È stato realizzato con HTML, CSS e JavaScript.
+## Descrizione
 
-Descrizione
-Il portfolio è un sito multipagina che include:
+Aliou Portfolio è un sito multipagina responsivo che offre:  
+- **Chi sono**: panoramica del mio background e delle mie competenze.  
+- **Progetti**: galleria dei miei lavori più significativi.  
+- **Contatti**: modulo semplice per inviare messaggi direttamente a me.
 
-Chi sono: Una pagina con informazioni personali.
-Progetti: Una sezione dedicata ai miei lavori.
-Contatti: Un modulo per mettersi in contatto con me.
-L’obiettivo è creare un sito professionale, semplice da navigare e adatto a tutti i dispositivi.
+L’interfaccia è studiata per garantire chiarezza, usabilità e compatibilità con qualsiasi dispositivo.
 
-Struttura del Progetto
-Il progetto è organizzato così:
+---
 
-bash
-Copia codice
+## Struttura del progetto
+
+```
+
 AliouPortfolio/
 ├── css/
-│   └── style.css        # Stile del sito
+│   └── style.css         # Stili CSS globali
 ├── js/
-│   └── script.js        # Funzioni interattive
-├── images/              # Cartella delle immagini
-├── index.html           # Pagina Home
-├── about.html           # Pagina About Me
-├── projects.html        # Pagina Progetti
-├── contact.html         # Pagina Contatti
-└── README.md            # Questo file
-Funzionalità
-Design adattabile a qualsiasi schermo (PC, tablet, smartphone).
-Menu di navigazione con collegamenti alle varie pagine.
-Effetti interattivi:
-Menu hamburger per dispositivi mobili.
-Tema giorno/notte (gestito con JavaScript).
-Modulo di contatto semplice da usare.
-Tecnologie Utilizzate
-HTML per la struttura.
-CSS per lo stile.
-JavaScript per l’interattività.
-Come Usare il Progetto
-Scarica o clona questo repository: https://github.com/AliouneDiagne/Alioune-s-Portfolio.git
-Apri il file index.html con un browser per vedere il sito.
+│   └── script.js         # Script interattivi
+├── images/               # Immagini e icone
+├── index.html            # Home
+├── about.html            # Pagina “Chi sono”
+├── projects.html         # Pagina “Progetti”
+├── contact.html          # Pagina “Contatti”
+└── README.md             # Documentazione
+
+````
+
+---
+
+## Funzionalità principali
+
+- **Design responsive**: ottimizzato per desktop, tablet e smartphone  
+- **Navigazione intuitiva**: menu di collegamento rapido tra le pagine  
+- **Menu hamburger**: per dispositivi mobili  
+- **Tema giorno/notte**: toggle gestito via JavaScript  
+- **Modulo di contatto**: invio di messaggi con validazione base
+
+---
+
+## Tecnologie utilizzate
+
+- **HTML5** per la struttura dei contenuti  
+- **CSS3** per layout, tipografia e media query  
+- **JavaScript** per interattività e dinamiche di pagina  
+
+
+
+## Avvio rapido
+
+1. **Clona il repository**  
+   ```bash
+   git clone https://github.com/AliouneDiagne/Alioune-s-Portfolio.git
+
+
+2. **Apri il progetto**
+   Avvia `index.html` con il browser per esplorare il sito.
+3. **Demo online**
+   Visualizza subito il risultato:
+  https://aliouportfoglio.tiiny.site
 
