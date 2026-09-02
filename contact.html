@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Contact Alioune Diagne - Cloud &amp; Backend Developer. Get in touch for collaboration, job opportunities, or project inquiries.">
+    <meta name="keywords" content="Alioune Diagne, Contact, Cloud Developer, Backend Developer, Collaboration, Hire Developer">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Contact | Alioune Diagne</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar("contact") in contact.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <main>
+
+        <section class="contact" id="contact">
+            <h2 class="section__title">Get In Touch</h2>
+            <p class="section__subtitle">Have a question or want to work together?</p>
+
+            <!-- Due colonne affiancate con Flexbox, che le media query
+                 impilano una sopra l'altra sugli schermi stretti. -->
+            <div class="contact-wrapper">
+
+                <div class="contact-form">
+
+                    <!-- novalidate disattiva i messaggi automatici del
+                         browser, che cambiano testo e aspetto da un
+                         browser all'altro. Il controllo lo fa
+                         contact.js, con messaggi sempre uguali. -->
+                    <form id="contactForm" novalidate>
+
+                        <!-- Ogni campo segue lo stesso schema: label
+                             collegata con for, input e messaggio di
+                             errore nascosto. Lo span diventa visibile
+                             quando contact.js gli aggiunge .visible. -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                            <span class="form-error" id="nameError">Please enter your name (at least 2 characters).</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                            <span class="form-error" id="emailError">Please enter a valid email address.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                            <span class="form-error" id="subjectError">Please enter a subject.</span>
+                        </div>
+
+                        <!-- maxlength blocca la scrittura oltre i 500
+                             caratteri. Il contatore accanto e' solo
+                             informativo e viene aggiornato da
+                             contact.js a ogni tasto premuto: il limite
+                             lo impone comunque l'attributo. -->
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Write your message here..." rows="6" required maxlength="500"></textarea>
+                            <span class="char-counter" id="charCounter">0/500 characters</span>
+                            <span class="form-error" id="messageError">Please enter a message (at least 10 characters).</span>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Recapiti statici. I simboli sono HTML entity:
+                     &#9993; busta, &#128205; segnaposto,
+                     &#128187; computer, &#9989; spunta. -->
+                <div class="contact-info">
+                    <div class="contact-info-card">
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#9993;</span>
+                            <div>
+                                <span class="contact-info-item__label">Email</span>
+                                <span class="contact-info-item__value">alioune.diagne@email.com</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#128205;</span>
+                            <div>
+                                <span class="contact-info-item__label">Location</span>
+                                <span class="contact-info-item__value">Italy</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#128187;</span>
+                            <div>
+                                <span class="contact-info-item__label">GitHub</span>
+                                <span class="contact-info-item__value">github.com/AliouneDiagne</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#9989;</span>
+                            <div>
+                                <span class="contact-info-item__label">Availability</span>
+                                <span class="contact-info-item__value">Open to opportunities</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

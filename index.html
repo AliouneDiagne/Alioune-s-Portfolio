@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Metadati per i motori di ricerca. description e' il testo
+         che compare sotto il titolo nei risultati di ricerca. -->
+    <meta name="description" content="Alioune Diagne - Cloud &amp; Backend Developer. Recent Computer Engineering &amp; AI graduate with CompTIA Security+ and AWS Solutions Architect certifications.">
+    <meta name="keywords" content="Alioune Diagne, Cloud Developer, Backend Developer, AWS, Computer Engineering, AI, Portfolio, CompTIA Security+, AWS Solutions Architect">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Alioune Diagne | Cloud &amp; Backend Developer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar("home") in home.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO
+             Prima schermata: chi sono e cosa faccio.
+             ============================================================ -->
+        <section class="hero" id="hero">
+            <div class="hero__layout">
+                <div class="hero__content">
+                    <p class="hero__subtitle">CLOUD &amp; BACKEND DEVELOPER</p>
+                    <h1 class="hero__title">Hi, I'm <span class="hero__name">Alioune Diagne</span></h1>
+                    <p class="hero__description">
+                        A recent Computer Engineering &amp; AI graduate passionate about building
+                        scalable cloud infrastructure and robust backend systems. Certified AWS
+                        Solutions Architect and CompTIA Security+ professional, ready to bring
+                        innovative solutions to complex technical challenges.
+                    </p>
+
+                    <!-- Lo span parte vuoto: initTypingEffect() in
+                         home.js ci scrive dentro un ruolo diverso ogni
+                         due secondi. Il cursore accanto lampeggia con
+                         un'animazione CSS. -->
+                    <p class="hero__typing">
+                        I'm a <span id="typing-text" class="typing-effect"></span><span class="typing-cursor">|</span>
+                    </p>
+
+                    <div class="hero__cta">
+                        <a href="projects.html" class="btn btn--primary">View Projects</a>
+                        <a href="contact.html" class="btn btn--secondary">Contact Me</a>
+                    </div>
+                </div>
+
+                <!-- figure e figcaption: l'immagine ha una didascalia
+                     che le appartiene, e questi tag lo dichiarano
+                     invece di lasciarlo intuire dalla posizione. -->
+                <figure class="hero__profile">
+                    <div class="hero__profile-frame">
+                        <img src="assets/profile.png" alt="Alioune Diagne, Cloud and Backend Developer">
+                    </div>
+                    <figcaption>
+                        <strong>Alioune Diagne</strong>
+                        <span>Cloud architecture / Backend systems</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             STATISTICHE
+             I numeri partono da 0 e salgono fino al valore scritto
+             in data-target. Il valore sta qui e non nel JavaScript:
+             per cambiarlo basta modificare l'attributo, e
+             initStatsAnimation() lo legge con dataset.
+             data-suffix aggiunge un simbolo dopo il numero.
+             ============================================================ -->
+        <section class="stats" id="stats">
+            <div class="container">
+                <article class="stat">
+                    <span class="stat__number" data-target="6">0</span>
+                    <span class="stat__label">Projects</span>
+                </article>
+                <article class="stat">
+                    <span class="stat__number" data-target="2">0</span>
+                    <span class="stat__label">Certifications</span>
+                </article>
+                <article class="stat">
+                    <span class="stat__number" data-target="8" data-suffix="+">0</span>
+                    <span class="stat__label">Technologies</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROGETTI IN EVIDENZA
+             Le card arrivano dalla GitHub API tramite fetch. Finche'
+             la risposta non arriva mostriamo lo spinner, che
+             loadFeaturedProjects() rimuove dal DOM quando ha finito.
+             ============================================================ -->
+        <section class="featured-projects" id="featured-projects">
+            <h2 class="section__title">Featured Projects</h2>
+            <p class="section__subtitle">A selection of my recent work</p>
+
+            <div class="featured-projects__grid" id="projects-grid">
+                <div class="loading-spinner" id="projects-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading projects from GitHub...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             WHAT I DO
+             Tre card che si aprono al click. I dettagli sono gia' qui
+             nell'HTML con l'attributo hidden, non creati dal
+             JavaScript: cosi' restano leggibili dai motori di ricerca
+             e dagli screen reader anche prima di essere aperti.
+             data-service identifica l'area di ogni card.
+             I simboli sono HTML entity: &#9729; nuvola,
+             &#9881; ingranaggio, &#128274; lucchetto.
+             ============================================================ -->
+        <section class="services" id="services">
+            <h2 class="section__title">What I Do</h2>
+            <p class="section__subtitle">Areas of expertise and passion</p>
+
+            <div class="services__grid">
+                <article class="services__card" data-service="cloud">
+                    <span class="services__icon">&#9729;</span>
+                    <h3 class="services__title">Cloud Computing</h3>
+                    <p class="services__description">
+                        Designing and deploying scalable cloud architectures on AWS.
+                        Experienced with EC2, S3, Lambda, and infrastructure as code
+                        using modern DevOps practices.
+                    </p>
+                    <div class="services__details" hidden>
+                        <ul>
+                            <li>AWS Solutions Architect Certified</li>
+                            <li>Infrastructure as Code (CloudFormation, Terraform)</li>
+                            <li>Serverless architectures with Lambda</li>
+                            <li>CI/CD pipeline design and automation</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="services__card" data-service="backend">
+                    <span class="services__icon">&#9881;</span>
+                    <h3 class="services__title">Backend Development</h3>
+                    <p class="services__description">
+                        Building robust REST APIs and microservices with Java and Python.
+                        Focused on clean architecture, design patterns, and database
+                        optimization for high-performance applications.
+                    </p>
+                    <div class="services__details" hidden>
+                        <ul>
+                            <li>REST API design and implementation</li>
+                            <li>Microservices architecture</li>
+                            <li>Database design (SQL &amp; NoSQL)</li>
+                            <li>OOP and design patterns</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="services__card" data-service="security">
+                    <span class="services__icon">&#128274;</span>
+                    <h3 class="services__title">Security</h3>
+                    <p class="services__description">
+                        Implementing security best practices across applications and
+                        infrastructure. CompTIA Security+ certified with knowledge of
+                        threat analysis, risk management, and secure coding.
+                    </p>
+                    <div class="services__details" hidden>
+                        <ul>
+                            <li>CompTIA Security+ Certified</li>
+                            <li>Application security and secure coding</li>
+                            <li>Network security and threat analysis</li>
+                            <li>Identity and access management (IAM)</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <!-- Script in fondo al body: il DOM e' gia' costruito quando
+         vengono eseguiti. app.js per primo, perche' home.js usa le
+         funzioni che definisce. -->
+    <script src="js/app.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>

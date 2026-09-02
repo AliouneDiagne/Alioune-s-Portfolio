@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- charset per primo: dice al browser come interpretare i byte
+       del file, quindi deve arrivare prima di qualsiasi testo.
+       viewport e' quello che rende utile il responsive design:
+       senza, il telefono finge di essere largo 980px e rimpicciolisce
+       tutto invece di applicare le media query. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Login page for Alioune Diagne's developer portfolio. Sign in to access the full profile and projects.">
+  <meta name="keywords" content="login, portfolio, developer, Alioune Diagne, web development, sign in">
+  <meta name="author" content="Alioune Diagne">
+
+  <title>Login - Alioune Diagne Portfolio</title>
+
+  <!-- Foglio di stile condiviso con tutte le altre pagine: un solo
+       file da caricare, e il browser lo tiene in cache. -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Questa pagina non ha la navbar: durante l'accesso non serve
+       un menu, e la via d'uscita e' il link "Continue as guest".
+       renderNavbar() se ne accorge da sola perche' non trova
+       l'elemento #navbar ed esce senza fare nulla. -->
+  <main class="login-page">
+    <div class="login-card">
+
+      <header>
+        <h1>Welcome Back</h1>
+        <p class="login-subtitle">Sign in to access your profile</p>
+      </header>
+
+      <!-- Il form non ha l'attributo action: non c'e' nessun
+           indirizzo a cui inviare i dati, perche' il submit lo
+           gestisce login.js con preventDefault. -->
+      <form id="loginForm">
+
+        <!-- La label e' collegata all'input tramite for="username",
+             che corrisponde al suo id. Serve a due cose: gli screen
+             reader annunciano il nome del campo, e cliccando sul
+             testo il cursore va dentro l'input.
+             required attiva anche il controllo del browser, ma
+             quello vero lo fa login.js con messaggi coerenti. -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          <span class="form-error" id="usernameError">Username is required</span>
+        </div>
+
+        <!-- type="password" nasconde i caratteri digitati -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <span class="form-error" id="passwordError">Password is required</span>
+        </div>
+
+        <!-- type="submit" fa scattare l'evento submit del form.
+             L'id serve a login.js per cambiare testo e disabilitare
+             il bottone durante l'accesso. -->
+        <button type="submit" class="btn btn--primary" id="submitBtn">Sign In</button>
+      </form>
+
+      <!-- Credenziali di prova in chiaro: il login e' simulato e
+           questa pagina serve a mostrare il meccanismo, non a
+           proteggere qualcosa. -->
+      <div class="login-hint">
+        <small>Demo credentials: <code>alioune</code> / <code>admin123</code></small>
+      </div>
+
+      <div class="login-footer">
+        <a href="index.html" class="guest-link">Continue as guest</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- app.js per primo: definisce Auth e showToast, che login.js
+       usa appena viene eseguito. -->
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

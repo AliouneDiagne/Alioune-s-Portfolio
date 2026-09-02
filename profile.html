@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Profilo utente - Alioune Diagne Developer Portfolio. Visualizza e modifica le informazioni del tuo account.">
+  <meta name="keywords" content="profilo, developer, portfolio, Alioune Diagne">
+  <meta name="author" content="Alioune Diagne">
+
+  <!-- Questa e' l'unica pagina con noindex: e' un'area riservata,
+       non ha senso farla comparire nei risultati di ricerca. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Profile - AD.dev Portfolio</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- La navbar arriva da renderNavbar() in app.js.
+       aria-label distingue questo nav per gli screen reader. -->
+  <header>
+    <nav id="navbar" class="navbar" aria-label="Navigazione principale"></nav>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- ============================================================
+           I due blocchi seguenti sono le due facce della pagina.
+           profile.js ne mostra uno e nasconde l'altro togliendo o
+           aggiungendo la classe .hidden, in base a Auth.isLoggedIn().
+           Entrambi partono nascosti: cosi' al caricamento non si
+           vede comparire per un istante il blocco sbagliato.
+           ============================================================ -->
+
+      <!-- Visibile solo a chi ha effettuato l'accesso -->
+      <div id="auth-content" class="hidden">
+
+        <!-- Riempiti da profile.js: qui restano vuoti di proposito -->
+        <div id="profile-header"></div>
+        <section id="profile-details"></section>
+
+        <!-- Editor del profilo, chiuso finche' non si preme
+             "Modifica Profilo" nella card Settings -->
+        <section id="edit-section" class="hidden">
+          <div class="card mt-3">
+            <h3>Modifica Profilo</h3>
+
+            <form id="editProfileForm" class="mt-2">
+
+              <!-- Ogni campo ha la stessa struttura: label collegata
+                   con for, input e messaggio di errore nascosto.
+                   Lo span diventa visibile quando profile.js gli
+                   aggiunge la classe .visible. -->
+              <div class="form-group">
+                <label for="editName">Nome completo</label>
+                <input type="text" id="editName" name="name" required>
+                <span class="form-error" id="nameError">Il nome e' obbligatorio.</span>
+              </div>
+
+              <!-- type="email" fa comparire la tastiera giusta sui
+                   telefoni. Il controllo vero lo fa comunque il
+                   JavaScript, che da' messaggi uguali su ogni browser. -->
+              <div class="form-group">
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" name="email" required>
+                <span class="form-error" id="emailError">Inserisci un indirizzo email valido.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="editRole">Ruolo</label>
+                <input type="text" id="editRole" name="role" required>
+                <span class="form-error" id="roleError">Il ruolo e' obbligatorio.</span>
+              </div>
+
+              <!-- type="button" sul secondo bottone: dentro un form
+                   il valore predefinito e' submit, quindi senza
+                   questo attributo "Annulla" invierebbe il form. -->
+              <div class="form-actions">
+                <button type="submit" class="btn btn--primary">Salva modifiche</button>
+                <button type="button" class="btn btn--outline" id="cancelEditBtn">Annulla</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Visibile a chi non ha effettuato l'accesso -->
+      <div id="guest-content" class="auth-required hidden">
+        <h2>Accesso richiesto</h2>
+        <p>Please log in to view your profile.</p>
+        <a href="login.html" class="btn btn--primary">Vai al Login</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Riempito da renderFooter() in app.js -->
+  <footer id="footer" class="footer"></footer>
+
+  <!-- Gli script stanno in fondo al body: cosi' il browser disegna
+       prima la pagina e poi li esegue, trovando il DOM gia' pronto.
+       L'ordine conta: app.js definisce Auth e showToast, che
+       profile.js usa subito dopo. -->
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+
+</body>
+</html>

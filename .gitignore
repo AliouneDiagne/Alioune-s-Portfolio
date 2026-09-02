@@ -1,0 +1,17 @@
+# Ambienti virtuali Python (non fanno parte dell'applicazione web)
+.venv/
+venv/
+__pycache__/
+
+# File di sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Log
+*.log

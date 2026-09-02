@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Certifications and technical skills of Alioune Diagne. CompTIA Security+, AWS Solutions Architect, and proficiency in Java, Python, JavaScript, cloud technologies.">
+    <meta name="keywords" content="Alioune Diagne, certifications, skills, CompTIA Security+, AWS Solutions Architect, Java, Python, JavaScript, cloud, backend, developer">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Certifications &amp; Skills | Alioune Diagne</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar() in certifications.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <!-- Un solo <main> per pagina: identifica il contenuto centrale
+         e permette agli screen reader di saltarci direttamente,
+         evitando di rileggere il menu a ogni cambio pagina. -->
+    <main>
+
+        <!-- La classe .fade-in parte trasparente. IntersectionObserver
+             in app.js aggiunge .visible quando la sezione entra nello
+             schermo, e la transizione CSS fa il resto. -->
+        <section class="certs-hero fade-in">
+            <header class="section-header">
+                <!-- Un solo <h1> per pagina: e' il titolo principale
+                     e i motori di ricerca lo usano come tale. -->
+                <h1>Certifications &amp; Skills</h1>
+                <p>Industry-recognized certifications and technical proficiencies that validate my expertise in cloud computing, security, and software development.</p>
+            </header>
+        </section>
+
+        <!-- Contenitore vuoto: le card arrivano da renderCertifications()
+             in certifications.js, che le costruisce dall'array dei dati. -->
+        <section class="certs-section fade-in">
+            <h2 class="section-title">Certifications</h2>
+            <div id="certs-container" class="grid grid--2"></div>
+        </section>
+
+        <section class="skills-section fade-in">
+            <header class="skills-heading">
+                <p class="eyebrow">Core Expertise</p>
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="skills-heading__intro">Cloud architecture, DevOps automation and backend systems built for reliable delivery.</p>
+            </header>
+
+            <!-- Riepilogo statico delle tre aree principali. Sta
+                 nell'HTML e non nel JavaScript perche' e' contenuto
+                 fisso: cosi' e' visibile anche a chi ha JavaScript
+                 disattivato e ai motori di ricerca.
+                 I simboli sono scritti come HTML entity per tenere il
+                 file in ASCII: &#9729; nuvola, &#9881; ingranaggio,
+                 &#9889; fulmine. -->
+            <div class="expertise-strip" aria-label="Core expertise areas">
+                <div class="expertise-strip__item">
+                    <span class="expertise-strip__icon">&#9729;</span>
+                    <div><strong>Cloud Computing</strong><span>AWS &middot; Docker &middot; Linux</span></div>
+                </div>
+                <div class="expertise-strip__item">
+                    <span class="expertise-strip__icon">&#9881;</span>
+                    <div><strong>DevOps</strong><span>CI/CD &middot; Git &middot; Automation</span></div>
+                </div>
+                <div class="expertise-strip__item">
+                    <span class="expertise-strip__icon">&#9889;</span>
+                    <div><strong>Backend</strong><span>Java &middot; Spring &middot; PostgreSQL</span></div>
+                </div>
+            </div>
+
+            <!-- Riempito da renderSkills(), che crea le categorie e
+                 anima le barre di competenza -->
+            <div id="skills-container"></div>
+        </section>
+
+        <!-- ============================================================
+             FORM DI VERIFICA
+
+             Terzo form del progetto, dopo login e contatti. Simula la
+             verifica di una certificazione: i dati non partono verso
+             nessun server, certifications.js li stampa in console.
+             ============================================================ -->
+        <section class="verify-section fade-in">
+            <h2 class="section-title">Verify a Certification</h2>
+            <p class="verify-description">Enter the certification details below to verify its authenticity.</p>
+
+            <form id="certVerifyForm" class="verify-form">
+
+                <div class="form-group">
+                    <label for="certName">Certification Name</label>
+                    <input type="text" id="certName" name="certName" placeholder="e.g. CompTIA Security+" required>
+                    <span class="form-error" id="certNameError">Certification name is required</span>
+                </div>
+
+                <!-- Il placeholder mostra il formato atteso. Il
+                     controllo con espressione regolare sta in
+                     certifications.js, dentro validateCertIdFormat. -->
+                <div class="form-group">
+                    <label for="certId">Certification ID</label>
+                    <input type="text" id="certId" name="certId" placeholder="e.g. COMP001-2024-XXXX" required>
+                    <span class="form-error" id="certIdError">Please enter a valid certification ID</span>
+                </div>
+
+                <!-- La prima option ha value vuoto: cosi' vale come
+                     "non scelto" e il controllo sul campo vuoto la
+                     intercetta come un errore. -->
+                <div class="form-group">
+                    <label for="certOrg">Issuing Organization</label>
+                    <select id="certOrg" name="certOrg" required>
+                        <option value="">-- Select Organization --</option>
+                        <option value="CompTIA">CompTIA</option>
+                        <option value="AWS">AWS</option>
+                        <option value="Microsoft">Microsoft</option>
+                        <option value="Google">Google</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="form-error" id="certOrgError">Please select an issuing organization</span>
+                </div>
+
+                <button type="submit" class="btn btn--primary">Verify Certification</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <!-- app.js definisce Auth, showToast, renderNavbar, renderFooter
+         e initScrollAnimations; certifications.js le usa tutte. -->
+    <script src="js/app.js"></script>
+    <script src="js/certifications.js"></script>
+
+</body>
+</html>

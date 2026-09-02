@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Alioune Diagne's portfolio - Explore projects across cloud computing, backend development, and artificial intelligence.">
+    <meta name="keywords" content="Alioune Diagne, portfolio, projects, cloud, backend, AI, Java, Python, JavaScript">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Projects | Alioune Diagne</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar("projects") in projects.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <header class="section-header">
+                <h1>My Projects</h1>
+                <p>Explore my work across cloud, backend, and AI</p>
+            </header>
+
+            <!-- ============================================================
+                 BARRA DEI FILTRI
+
+                 Le label sono collegate ai campi con for="id": senza,
+                 uno screen reader leggerebbe solo "casella di testo"
+                 senza dire cosa scriverci. Il placeholder non basta,
+                 perche' sparisce appena si inizia a digitare.
+                 La classe .sr-only le nasconde alla vista ma le lascia
+                 nel documento per le tecnologie assistive. Con
+                 display:none sparirebbero anche per loro.
+                 ============================================================ -->
+            <div class="filter-bar">
+                <label for="searchInput" class="sr-only">Search projects by name or description</label>
+                <input type="text" id="searchInput" placeholder="Search projects...">
+
+                <label for="filterLanguage" class="sr-only">Filter projects by programming language</label>
+                <select id="filterLanguage">
+                    <option value="All">All</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="HTML">HTML</option>
+                </select>
+            </div>
+
+            <!-- Contenitore vuoto: renderProjects() in projects.js lo
+                 riempie e lo svuota a ogni cambio di filtro. -->
+            <div id="projects-container" class="grid grid--3"></div>
+
+            <!-- Spinner visibile durante la fetch. A differenza della
+                 home qui non viene rimosso ma solo nascosto, perche'
+                 potrebbe servire di nuovo. -->
+            <div id="loading-spinner" class="spinner">
+                <div class="spinner__circle"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/projects.js"></script>
+
+</body>
+</html>
