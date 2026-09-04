@@ -1,21 +1,11 @@
 /* ============================================================
-   certifications.js
-   Pagina certificazioni: card espandibili, dashboard delle
-   competenze con barre animate e form di verifica.
-
-   Dati e presentazione sono separati. Gli array qui sotto
-   descrivono solo il contenuto; le funzioni di rendering lo
-   trasformano in HTML. Per aggiungere una certificazione basta
-   una voce nell'array, senza toccare il resto del codice.
+   certifications.js — Card certificazioni, dashboard competenze
+   e form di verifica. Dati e rendering separati.
    ============================================================ */
 
 "use strict";
 
-/* Icone e separatori non sono scritti come caratteri speciali ma
-   come escape Unicode e HTML entity: il file resta in puro ASCII e
-   non dipende dalla codifica con cui viene aperto.
-   \u{FE0F} chiede al browser la versione a colori del simbolo,
-   &middot; e' il punto centrale che separa le voci. */
+/* Icone come escape Unicode; &middot; come separatore. */
 
 const certifications = [
   {
@@ -36,9 +26,7 @@ const certifications = [
   }
 ];
 
-/* Competenze raggruppate per area. La proprieta' priority decide
-   quanto risalto dare alla categoria nel CSS, mentre percentage
-   guida la lunghezza della barra. */
+/* Competenze raggruppate per area. priority → stile CSS, percentage → larghezza barra. */
 
 const skills = [
   {
@@ -91,21 +79,14 @@ const skills = [
   }
 ];
 
-/* ============================================================
-   CARD DELLE CERTIFICAZIONI
-   ============================================================ */
+/* ---- CARD CERTIFICAZIONI ---- */
 
-/** Crea una card per ogni certificazione e la rende espandibile. */
 const renderCertifications = () => {
   const container = document.getElementById("certs-container");
   if (!container) return;
 
   certifications.forEach((cert) => {
     const card = document.createElement("div");
-
-    /* fade-in insieme a visible: queste card nascono dopo che
-       IntersectionObserver ha gia' controllato la pagina, quindi
-       senza visible resterebbero invisibili. */
     card.className = "cert-card fade-in visible";
 
     card.innerHTML = `
@@ -125,43 +106,27 @@ const renderCertifications = () => {
       </div>
     `;
 
-    /* Il listener va aggiunto qui, non fuori dal ciclo: ogni card
-       deve aprire i propri dettagli, e la variabile card cambia a
-       ogni giro. */
+    /* Toggle espansione al click. */
     card.addEventListener("click", () => {
       const details = card.querySelector(".cert-card__details");
-
-      /* Il CSS anima max-height tra 0 e un valore pieno. Con
-         display:none non ci sarebbe nessuna transizione, perche'
-         un elemento nascosto cosi' non ha altezza da animare. */
       details.classList.toggle("expanded");
 
       const summary = card.querySelector(".cert-card__summary");
-
-      /* contains legge lo stato dopo il toggle e aggiorna il
-         testo dell'invito al click. */
-      if (details.classList.contains("expanded")) {
-        summary.textContent = "Click to hide details";
-      } else {
-        summary.textContent = "Click to see details";
-      }
+      summary.textContent = details.classList.contains("expanded")
+        ? "Click to hide details"
+        : "Click to see details";
     });
 
     container.appendChild(card);
   });
 };
 
-/* ============================================================
-   DASHBOARD DELLE COMPETENZE
-   ============================================================ */
+/* ---- DASHBOARD COMPETENZE ---- */
 
-/** Crea le categorie, le voci cliccabili e anima le barre. */
 const renderSkills = () => {
   const container = document.getElementById("skills-container");
   if (!container) return;
 
-  /* forEach passa anche l'indice: qui serve a scaglionare le
-     animazioni categoria per categoria. */
   skills.forEach((category, categoryIndex) => {
     const categoryCard = document.createElement("article");
     categoryCard.className = `skill-category skill-category--${category.priority} fade-in visible`;
@@ -180,23 +145,11 @@ const renderSkills = () => {
     const list = categoryCard.querySelector(".skill-category__list");
 
     category.skills.forEach((skill, skillIndex) => {
-      /* button e non div: l'elemento e' cliccabile, quindi deve
-         essere raggiungibile con il tasto Tab e attivabile con
-         Invio. Un div andrebbe reso accessibile a mano. */
       const skillItem = document.createElement("button");
-
-      /* Dentro un form un button vale submit: type="button" evita
-         invii non voluti se un giorno la dashboard finisse in un form. */
       skillItem.type = "button";
       skillItem.className = "skill-item";
-
-      /* aria-expanded comunica agli screen reader se i dettagli
-         sono aperti. Va tenuto allineato allo stato reale. */
       skillItem.setAttribute("aria-expanded", "false");
 
-      /* La barra e' decorativa: il valore e' gia' scritto in cifre
-         accanto al nome, quindi aria-hidden la esclude dalla
-         lettura per non ripetere la stessa informazione. */
       skillItem.innerHTML = `
         <span class="skill-item__topline">
           <span><strong>${skill.name}</strong><small>${skill.label}</small></span>
@@ -209,12 +162,7 @@ const renderSkills = () => {
       const fill = skillItem.querySelector(".skill-item__fill");
 
       skillItem.addEventListener("click", () => {
-        /* toggle restituisce true se la classe e' stata aggiunta,
-           quindi ci dice subito lo stato nuovo. */
         const expanded = skillItem.classList.toggle("is-expanded");
-
-        /* setAttribute vuole una stringa: String() converte il
-           booleano in "true" o "false". */
         skillItem.setAttribute("aria-expanded", String(expanded));
 
         const details = skillItem.querySelector(".skill-item__details");
@@ -225,12 +173,7 @@ const renderSkills = () => {
 
       list.appendChild(skillItem);
 
-      /* Le barre partono con un ritardo crescente, cosi' si
-         riempiono a cascata invece che tutte insieme.
-         scaleX ridimensiona la barra senza cambiarne la larghezza
-         reale: il browser lo gestisce sulla scheda grafica e
-         l'animazione resta fluida. transformOrigin la fa crescere
-         da sinistra invece che dal centro. */
+      /* Barre animate a cascata con ritardo crescente. */
       setTimeout(() => {
         fill.style.width = "100%";
         fill.style.transform = `scaleX(${skill.percentage / 100})`;
@@ -242,11 +185,8 @@ const renderSkills = () => {
   });
 };
 
-/* ============================================================
-   FORM DI VERIFICA CERTIFICAZIONE
-   ============================================================ */
+/* ---- FORM DI VERIFICA ---- */
 
-/** Collega la validazione al form, sia mentre si scrive sia al submit. */
 const initFormValidation = () => {
   const form = document.getElementById("certVerifyForm");
   if (!form) return;
@@ -259,12 +199,7 @@ const initFormValidation = () => {
   const certIdError = document.getElementById("certIdError");
   const certOrgError = document.getElementById("certOrgError");
 
-  /**
-   * Controlla che un campo non sia vuoto e aggiorna l'interfaccia.
-   * @param {HTMLElement} input campo da controllare
-   * @param {HTMLElement} errorSpan messaggio di errore collegato
-   * @returns {boolean} true se il campo e' compilato
-   */
+  /** Valida campo vuoto e aggiorna UI. */
   const validateField = (input, errorSpan) => {
     const value = input.value.trim();
 
@@ -279,28 +214,18 @@ const initFormValidation = () => {
     return true;
   };
 
-  /**
-   * Controlla la forma dell'ID: un gruppo di lettere o numeri, un
-   * trattino e almeno un altro gruppo. Esempio: COMP001-2024-XXXX.
-   * @param {string} id valore da controllare
-   * @returns {boolean} true se il formato e' corretto
-   */
+  /** Controlla formato ID (es. COMP001-2024-XXXX). */
   const validateCertIdFormat = (id) => {
-    /* ^ e $ ancorano il pattern a inizio e fine stringa: senza,
-       basterebbe una parte qualsiasi del testo a farlo passare. */
     const pattern = /^[A-Za-z0-9]+-[A-Za-z0-9-]+$/;
     return pattern.test(id) && id.length >= 4;
   };
 
-  /* Validazione a ogni tasto premuto. */
+  /* Validazione in tempo reale. */
 
   certNameInput.addEventListener("input", () => {
     validateField(certNameInput, certNameError);
   });
 
-  /* L'ID ha due errori possibili, vuoto o mal formattato, quindi
-     non basta validateField: cambiamo anche il testo del messaggio
-     per dire all'utente qual e' il problema. */
   certIdInput.addEventListener("input", () => {
     const value = certIdInput.value.trim();
 
@@ -318,23 +243,18 @@ const initFormValidation = () => {
     }
   });
 
-  /* Sulla select l'evento input scatta alla scelta dell'opzione,
-     come change. Lo usiamo per coerenza con gli altri campi. */
   certOrgSelect.addEventListener("input", () => {
     validateField(certOrgSelect, certOrgError);
   });
 
-  /* ---- Controllo finale al submit ---- */
+  /* Controllo finale al submit. */
 
   form.addEventListener("submit", (e) => {
-    /* Blocca l'invio al server e il ricaricamento della pagina. */
     e.preventDefault();
 
     let isValid = true;
 
-    if (!validateField(certNameInput, certNameError)) {
-      isValid = false;
-    }
+    if (!validateField(certNameInput, certNameError)) isValid = false;
 
     const certIdValue = certIdInput.value.trim();
 
@@ -353,9 +273,7 @@ const initFormValidation = () => {
       certIdInput.classList.remove("input-error");
     }
 
-    if (!validateField(certOrgSelect, certOrgError)) {
-      isValid = false;
-    }
+    if (!validateField(certOrgSelect, certOrgError)) isValid = false;
 
     if (isValid) {
       const formData = {
@@ -364,18 +282,11 @@ const initFormValidation = () => {
         certOrg: certOrgSelect.value
       };
 
-      /* Invio simulato: i dati finiscono nella console del browser.
-         Con un backend vero partirebbe una fetch verso il servizio
-         di verifica dell'ente emittente. */
+      /* Invio simulato — i dati vanno solo in console. */
       console.log("Verification request submitted:", formData);
-
       showToast("Verification request submitted", "success");
-
       form.reset();
 
-      /* reset svuota i campi ma lascia le classi aggiunte da noi:
-         senza questo ciclo i bordi rossi resterebbero su campi
-         ormai vuoti. */
       [certNameInput, certIdInput, certOrgSelect].forEach((input) => {
         input.classList.remove("input-error");
       });
@@ -385,17 +296,12 @@ const initFormValidation = () => {
   });
 };
 
-/* ============================================================
-   AVVIO
-   ============================================================ */
+/* ---- AVVIO ---- */
 
 document.addEventListener("DOMContentLoaded", () => {
   renderNavbar("certifications");
   renderCertifications();
   renderSkills();
   initFormValidation();
-
-  /* Va chiamata dopo il rendering: IntersectionObserver puo'
-     osservare solo elementi gia' presenti nel DOM. */
   initScrollAnimations();
 });

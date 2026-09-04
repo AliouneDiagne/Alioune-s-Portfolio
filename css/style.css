@@ -1,20 +1,9 @@
 /* ============================================================
    ALIOUNE DIAGNE - DEVELOPER PORTFOLIO
    style.css - Main Stylesheet
-
-   Concetti CSS dimostrati:
-   - Selettori: elemento, classe (.classe), ID (#id), discendente, figlio (>)
-   - Box Model: margin, padding, border, box-sizing
-   - Flexbox: display:flex, justify-content, align-items, flex-wrap
-   - Responsive Design: media queries (@media)
-   - Animazioni CSS: transition, @keyframes, transform
-   - Variabili CSS (Custom Properties)
-   - Specificita': elemento < classe < ID < inline
    ============================================================ */
 
-/* ---- CSS Custom Properties (Variabili) ----
-   Definite su :root, accessibili ovunque nel documento.
-   Vantaggio: cambi il colore in un punto e si aggiorna ovunque. */
+/* ---- Custom Properties ---- */
 :root {
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
@@ -39,9 +28,7 @@
   --max-width: 1200px;
 }
 
-/* ---- Reset e Box-Sizing ----
-   box-sizing: border-box fa si' che padding e border siano INCLUSI
-   nella larghezza/altezza totale dell'elemento (vedi Box Model). */
+/* ---- Reset e Box-Sizing ---- */
 *,
 *::before,
 *::after {
@@ -50,8 +37,7 @@
   box-sizing: border-box;
 }
 
-/* ---- Base ----
-   Selettore di elemento: si applica a TUTTI i tag di quel tipo. */
+/* ---- Base ---- */
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -103,11 +89,7 @@ p {
 }
 
 /* ============================================================
-   LAYOUT - Flexbox
-   display: flex crea un contenitore flessibile.
-   justify-content: allinea lungo l'asse principale (orizzontale).
-   align-items: allinea lungo l'asse trasversale (verticale).
-   flex-wrap: wrap permette agli elementi di andare a capo.
+   LAYOUT
    ============================================================ */
 
 .container {
@@ -134,7 +116,6 @@ p {
 
 /* ============================================================
    NAVBAR
-   Flexbox: space-between per distribuire logo e menu ai lati opposti.
    ============================================================ */
 .navbar {
   background-color: rgba(15, 23, 42, 0.95);
@@ -146,8 +127,7 @@ p {
   z-index: 1000;
 }
 
-/* Selettore discendente (.navbar .container): seleziona .container
-   che si trova DENTRO .navbar, a qualsiasi livello di profondita'. */
+
 .navbar .container {
   display: flex;
   justify-content: space-between;
@@ -168,8 +148,7 @@ p {
   -webkit-text-fill-color: transparent;
 }
 
-/* Selettore figlio diretto (.navbar__menu > li): seleziona solo
-   gli <li> che sono figli DIRETTI di .navbar__menu. */
+
 .navbar__menu {
   display: flex;
   align-items: center;
@@ -435,9 +414,7 @@ p {
 }
 
 /* ============================================================
-   CARDS - Componente riutilizzabile
-   Dimostra: Box Model (padding, border, margin), border-radius,
-   box-shadow, transition, transform (hover effect).
+   CARDS
    ============================================================ */
 .card {
   background-color: var(--bg-secondary);
@@ -689,9 +666,7 @@ p {
 }
 
 /* ============================================================
-   GRID LAYOUTS - Flexbox
-   flex-wrap: wrap permette agli elementi di andare a capo.
-   calc() calcola dinamicamente la larghezza.
+   GRID LAYOUTS
    ============================================================ */
 .grid {
   display: flex;
@@ -711,8 +686,6 @@ p {
 
 /* ============================================================
    FORMS
-   Dimostra: selettori di attributo [type="text"], pseudo-classi
-   (:focus, :valid, :invalid), box model su input.
    ============================================================ */
 .form-group {
   margin-bottom: 1.25rem;
@@ -847,9 +820,7 @@ p {
 }
 
 /* ============================================================
-   TOAST NOTIFICATIONS - Feedback utente
-   position: fixed per posizionare rispetto al viewport.
-   z-index alto per stare sopra tutto.
+   TOAST NOTIFICATIONS
    ============================================================ */
 .toast-container {
   position: fixed;
@@ -1273,8 +1244,6 @@ p {
 
 /* ============================================================
    LOADING SPINNER
-   @keyframes: definisce un'animazione CSS.
-   animation: applica l'animazione all'elemento.
    ============================================================ */
 .spinner {
   display: flex;
@@ -1415,11 +1384,7 @@ p {
 .mb-3 { margin-bottom: 1.5rem; }
 .hidden { display: none !important; }
 
-/* ---- .sr-only (screen reader only) ----
-   Accessibilita': nasconde l'elemento visivamente ma lo lascia
-   leggibile dagli screen reader. Usata per le <label> della barra
-   dei filtri in projects.html. display:none NON andrebbe bene:
-   nasconderebbe l'elemento anche alle tecnologie assistive. */
+/* ---- .sr-only: nascosto visivamente, leggibile dagli screen reader ---- */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1445,13 +1410,7 @@ p {
 }
 
 /* ============================================================
-   RESPONSIVE DESIGN - Media Queries
-
-   @media (max-width: 768px): si applica quando lo schermo e'
-   largo al massimo 768px (tablet e mobile).
-
-   La logica e' "mobile-first" quando usi min-width, o "desktop-first"
-   quando usi max-width come qui.
+   RESPONSIVE DESIGN - Media Queries (desktop-first)
    ============================================================ */
 @media (max-width: 768px) {
   .hero__layout {
@@ -1638,10 +1597,7 @@ p {
 }
 
 /* ============================================================
-   ANIMAZIONI CSS - Bonus
-   transition: crea un'animazione tra due stati (es. hover).
-   @keyframes: definisce un'animazione personalizzata.
-   animation: applica un @keyframes con durata, timing, etc.
+   ANIMAZIONI CSS
    ============================================================ */
 
 /* Effetto pulse sul bottone CTA */
@@ -1662,10 +1618,7 @@ p {
 }
 
 /* ============================================================
-   TITOLI DI SEZIONE (pagine Projects e Certifications)
-   Le pagine index.html e contact.html usano .section__title,
-   projects.html e certifications.html usano .section-header/.section-title.
-   Qui definiamo la seconda coppia per avere titoli coerenti ovunque.
+   TITOLI DI SEZIONE (Projects e Certifications)
    ============================================================ */
 .section-header {
   text-align: center;
@@ -1689,21 +1642,13 @@ p {
   margin-bottom: 2rem;
 }
 
-/* ============================================================
-   EFFETTO TYPING (home)
-   Il testo dei ruoli professionali viene sostituito da home.js.
-   color e font-weight lo distinguono dal resto del paragrafo.
-   ============================================================ */
+/* ---- EFFETTO TYPING (home) ---- */
 .typing-effect {
   color: var(--accent-cyan);
   font-weight: 600;
 }
 
-/* ============================================================
-   SPINNER DI CARICAMENTO (home)
-   Contenitore mostrato mentre la Fetch API scarica i progetti.
-   flex-direction: column mette il cerchio sopra e il testo sotto.
-   ============================================================ */
+/* ---- SPINNER DI CARICAMENTO (home) ---- */
 .loading-spinner {
   display: flex;
   flex-direction: column;
@@ -1725,11 +1670,7 @@ p {
   animation: spin 0.8s linear infinite;
 }
 
-/* ============================================================
-   CARD PROGETTO - Metadati e topics (pagina Projects)
-   .card__meta e .card__topics usano Flexbox con flex-wrap
-   per mandare a capo i tag quando lo spazio non basta.
-   ============================================================ */
+/* ---- CARD PROGETTO - Metadati e topics ---- */
 .card__meta {
   display: flex;
   align-items: center;
@@ -1753,16 +1694,13 @@ p {
   margin-bottom: 1rem;
 }
 
-/* ---- Stato "selezionato" della card ----
-   projects.js fa classList.toggle("card--active") al click:
-   questa regola rende visibile quel cambio di stato. */
+/* ---- Stato selezionato della card ---- */
 .card--active {
   border-color: var(--accent-blue);
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35);
 }
 
-/* ---- Messaggio "nessun risultato" ----
-   Creato da projects.js quando i filtri non trovano progetti. */
+/* ---- Messaggio nessun risultato ---- */
 .no-results {
   width: 100%;
   text-align: center;
@@ -1773,10 +1711,7 @@ p {
   border-radius: var(--radius-lg);
 }
 
-/* ============================================================
-   CARD CERTIFICAZIONE - Header e topics
-   .cert-card__header allinea icona e testo affiancati con Flexbox.
-   ============================================================ */
+/* ---- CARD CERTIFICAZIONE - Header e topics ---- */
 .cert-card__header {
   display: flex;
   align-items: flex-start;
@@ -1810,10 +1745,7 @@ p {
   font-size: 0.75rem;
 }
 
-/* ============================================================
-   FORM DI VERIFICA CERTIFICAZIONE
-   max-width + margin auto centrano il form senza usare Flexbox.
-   ============================================================ */
+/* ---- FORM DI VERIFICA CERTIFICAZIONE ---- */
 .verify-description {
   text-align: center;
   color: var(--text-secondary);
@@ -1858,12 +1790,7 @@ p {
   color: var(--accent-cyan);
 }
 
-/* ============================================================
-   ANIMAZIONE SHAKE - Feedback di errore sul login
-   login.js aggiunge la classe .shake al form quando le
-   credenziali sono errate, e la rimuove dopo 500ms.
-   translateX alterna il form a destra e a sinistra.
-   ============================================================ */
+/* ---- ANIMAZIONE SHAKE (login) ---- */
 @keyframes shake {
   0%, 100% { transform: translateX(0); }
   20%, 60% { transform: translateX(-8px); }
@@ -1874,21 +1801,13 @@ p {
   animation: shake 0.5s ease;
 }
 
-/* ============================================================
-   CAMPO IN FOCUS - Feedback visivo sugli input
-   contact.js aggiunge .input-focused sull'evento "focus"
-   e la rimuove sull'evento "blur".
-   ============================================================ */
+/* ---- CAMPO IN FOCUS ---- */
 .input-focused {
   border-color: var(--accent-cyan) !important;
   box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
 }
 
-/* ============================================================
-   CONTATORE DI CARATTERI (textarea del form contatti)
-   contact.js aggiunge .char-counter--warning oltre il 90%
-   dei caratteri disponibili: il colore passa ad arancione.
-   ============================================================ */
+/* ---- CONTATORE CARATTERI ---- */
 .char-counter {
   display: block;
   text-align: right;
@@ -1903,12 +1822,7 @@ p {
   font-weight: 600;
 }
 
-/* ============================================================
-   MESSAGGIO DI SUCCESSO (form contatti)
-   Il div viene creato dinamicamente da contact.js dopo un invio
-   valido, e rimosso dopo 5 secondi con setTimeout.
-   L'animazione slideIn e' la stessa gia' usata dai toast.
-   ============================================================ */
+/* ---- MESSAGGIO DI SUCCESSO (form contatti) ---- */
 .success-message {
   display: flex;
   align-items: flex-start;
@@ -1936,11 +1850,6 @@ p {
 
 /* ============================================================
    PAGINA PROFILO: LISTA ATTIVITA' E AZIONI
-
-   Queste classi sostituiscono gli stili che prima profile.js
-   scriveva direttamente sugli elementi con element.style.
-   Tenerli qui separa la presentazione dalla logica: il
-   JavaScript decide cosa mostrare, il CSS come mostrarlo.
    ============================================================ */
 .profile-activity {
   display: flex;
@@ -1981,8 +1890,7 @@ p {
   gap: 0.75rem;
 }
 
-/* Riga di bottoni del form di modifica profilo. Sostituisce lo
-   stile inline che stava nell'attributo style di profile.html. */
+/* Riga di bottoni del form di modifica profilo */
 .form-actions {
   display: flex;
   gap: 1rem;

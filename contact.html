@@ -14,7 +14,6 @@
 </head>
 <body>
 
-    <!-- Menu generato da renderNavbar("contact") in contact.js -->
     <header>
         <nav id="navbar"></nav>
     </header>
@@ -25,22 +24,14 @@
             <h2 class="section__title">Get In Touch</h2>
             <p class="section__subtitle">Have a question or want to work together?</p>
 
-            <!-- Due colonne affiancate con Flexbox, che le media query
-                 impilano una sopra l'altra sugli schermi stretti. -->
+            <!-- Due colonne con Flexbox, impilate su mobile -->
             <div class="contact-wrapper">
 
                 <div class="contact-form">
 
-                    <!-- novalidate disattiva i messaggi automatici del
-                         browser, che cambiano testo e aspetto da un
-                         browser all'altro. Il controllo lo fa
-                         contact.js, con messaggi sempre uguali. -->
+                    <!-- novalidate: validazione gestita da contact.js con messaggi coerenti -->
                     <form id="contactForm" novalidate>
 
-                        <!-- Ogni campo segue lo stesso schema: label
-                             collegata con for, input e messaggio di
-                             errore nascosto. Lo span diventa visibile
-                             quando contact.js gli aggiunge .visible. -->
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" id="name" name="name" placeholder="Your full name" required>
@@ -59,11 +50,6 @@
                             <span class="form-error" id="subjectError">Please enter a subject.</span>
                         </div>
 
-                        <!-- maxlength blocca la scrittura oltre i 500
-                             caratteri. Il contatore accanto e' solo
-                             informativo e viene aggiornato da
-                             contact.js a ogni tasto premuto: il limite
-                             lo impone comunque l'attributo. -->
                         <div class="form-group">
                             <label for="message">Message</label>
                             <textarea id="message" name="message" placeholder="Write your message here..." rows="6" required maxlength="500"></textarea>
@@ -75,9 +61,7 @@
                     </form>
                 </div>
 
-                <!-- Recapiti statici. I simboli sono HTML entity:
-                     &#9993; busta, &#128205; segnaposto,
-                     &#128187; computer, &#9989; spunta. -->
+                <!-- Recapiti statici -->
                 <div class="contact-info">
                     <div class="contact-info-card">
 
@@ -121,7 +105,6 @@
 
     </main>
 
-    <!-- Riempito da renderFooter() in app.js -->
     <footer id="footer"></footer>
 
     <script src="js/app.js"></script>

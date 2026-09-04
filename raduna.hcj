@@ -1,0 +1,5053 @@
+﻿
+/* ===== index.html ===== */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Metadati per i motori di ricerca. description e' il testo
+         che compare sotto il titolo nei risultati di ricerca. -->
+    <meta name="description" content="Alioune Diagne - Cloud &amp; Backend Developer. Recent Computer Engineering &amp; AI graduate with CompTIA Security+ and AWS Solutions Architect certifications.">
+    <meta name="keywords" content="Alioune Diagne, Cloud Developer, Backend Developer, AWS, Computer Engineering, AI, Portfolio, CompTIA Security+, AWS Solutions Architect">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Alioune Diagne | Cloud &amp; Backend Developer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar("home") in home.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <main>
+
+        <!-- ============================================================
+             HERO
+             Prima schermata: chi sono e cosa faccio.
+             ============================================================ -->
+        <section class="hero" id="hero">
+            <div class="hero__layout">
+                <div class="hero__content">
+                    <p class="hero__subtitle">CLOUD &amp; BACKEND DEVELOPER</p>
+                    <h1 class="hero__title">Hi, I'm <span class="hero__name">Alioune Diagne</span></h1>
+                    <p class="hero__description">
+                        A recent Computer Engineering &amp; AI graduate passionate about building
+                        scalable cloud infrastructure and robust backend systems. Certified AWS
+                        Solutions Architect and CompTIA Security+ professional, ready to bring
+                        innovative solutions to complex technical challenges.
+                    </p>
+
+                    <!-- Lo span parte vuoto: initTypingEffect() in
+                         home.js ci scrive dentro un ruolo diverso ogni
+                         due secondi. Il cursore accanto lampeggia con
+                         un'animazione CSS. -->
+                    <p class="hero__typing">
+                        I'm a <span id="typing-text" class="typing-effect"></span><span class="typing-cursor">|</span>
+                    </p>
+
+                    <div class="hero__cta">
+                        <a href="projects.html" class="btn btn--primary">View Projects</a>
+                        <a href="contact.html" class="btn btn--secondary">Contact Me</a>
+                    </div>
+                </div>
+
+                <!-- figure e figcaption: l'immagine ha una didascalia
+                     che le appartiene, e questi tag lo dichiarano
+                     invece di lasciarlo intuire dalla posizione. -->
+                <figure class="hero__profile">
+                    <div class="hero__profile-frame">
+                        <img src="assets/profile.png" alt="Alioune Diagne, Cloud and Backend Developer">
+                    </div>
+                    <figcaption>
+                        <strong>Alioune Diagne</strong>
+                        <span>Cloud architecture / Backend systems</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             STATISTICHE
+             I numeri partono da 0 e salgono fino al valore scritto
+             in data-target. Il valore sta qui e non nel JavaScript:
+             per cambiarlo basta modificare l'attributo, e
+             initStatsAnimation() lo legge con dataset.
+             data-suffix aggiunge un simbolo dopo il numero.
+             ============================================================ -->
+        <section class="stats" id="stats">
+            <div class="container">
+                <article class="stat">
+                    <span class="stat__number" data-target="6">0</span>
+                    <span class="stat__label">Projects</span>
+                </article>
+                <article class="stat">
+                    <span class="stat__number" data-target="2">0</span>
+                    <span class="stat__label">Certifications</span>
+                </article>
+                <article class="stat">
+                    <span class="stat__number" data-target="8" data-suffix="+">0</span>
+                    <span class="stat__label">Technologies</span>
+                </article>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             PROGETTI IN EVIDENZA
+             Le card arrivano dalla GitHub API tramite fetch. Finche'
+             la risposta non arriva mostriamo lo spinner, che
+             loadFeaturedProjects() rimuove dal DOM quando ha finito.
+             ============================================================ -->
+        <section class="featured-projects" id="featured-projects">
+            <h2 class="section__title">Featured Projects</h2>
+            <p class="section__subtitle">A selection of my recent work</p>
+
+            <div class="featured-projects__grid" id="projects-grid">
+                <div class="loading-spinner" id="projects-spinner">
+                    <div class="spinner"></div>
+                    <p>Loading projects from GitHub...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================
+             WHAT I DO
+             Tre card che si aprono al click. I dettagli sono gia' qui
+             nell'HTML con l'attributo hidden, non creati dal
+             JavaScript: cosi' restano leggibili dai motori di ricerca
+             e dagli screen reader anche prima di essere aperti.
+             data-service identifica l'area di ogni card.
+             I simboli sono HTML entity: &#9729; nuvola,
+             &#9881; ingranaggio, &#128274; lucchetto.
+             ============================================================ -->
+        <section class="services" id="services">
+            <h2 class="section__title">What I Do</h2>
+            <p class="section__subtitle">Areas of expertise and passion</p>
+
+            <div class="services__grid">
+                <article class="services__card" data-service="cloud">
+                    <span class="services__icon">&#9729;</span>
+                    <h3 class="services__title">Cloud Computing</h3>
+                    <p class="services__description">
+                        Designing and deploying scalable cloud architectures on AWS.
+                        Experienced with EC2, S3, Lambda, and infrastructure as code
+                        using modern DevOps practices.
+                    </p>
+                    <div class="services__details" hidden>
+                        <ul>
+                            <li>AWS Solutions Architect Certified</li>
+                            <li>Infrastructure as Code (CloudFormation, Terraform)</li>
+                            <li>Serverless architectures with Lambda</li>
+                            <li>CI/CD pipeline design and automation</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="services__card" data-service="backend">
+                    <span class="services__icon">&#9881;</span>
+                    <h3 class="services__title">Backend Development</h3>
+                    <p class="services__description">
+                        Building robust REST APIs and microservices with Java and Python.
+                        Focused on clean architecture, design patterns, and database
+                        optimization for high-performance applications.
+                    </p>
+                    <div class="services__details" hidden>
+                        <ul>
+                            <li>REST API design and implementation</li>
+                            <li>Microservices architecture</li>
+                            <li>Database design (SQL &amp; NoSQL)</li>
+                            <li>OOP and design patterns</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="services__card" data-service="security">
+                    <span class="services__icon">&#128274;</span>
+                    <h3 class="services__title">Security</h3>
+                    <p class="services__description">
+                        Implementing security best practices across applications and
+                        infrastructure. CompTIA Security+ certified with knowledge of
+                        threat analysis, risk management, and secure coding.
+                    </p>
+                    <div class="services__details" hidden>
+                        <ul>
+                            <li>CompTIA Security+ Certified</li>
+                            <li>Application security and secure coding</li>
+                            <li>Network security and threat analysis</li>
+                            <li>Identity and access management (IAM)</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <!-- Script in fondo al body: il DOM e' gia' costruito quando
+         vengono eseguiti. app.js per primo, perche' home.js usa le
+         funzioni che definisce. -->
+    <script src="js/app.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
+
+/* ===== certifications.html ===== */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Certifications and technical skills of Alioune Diagne. CompTIA Security+, AWS Solutions Architect, and proficiency in Java, Python, JavaScript, cloud technologies.">
+    <meta name="keywords" content="Alioune Diagne, certifications, skills, CompTIA Security+, AWS Solutions Architect, Java, Python, JavaScript, cloud, backend, developer">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Certifications &amp; Skills | Alioune Diagne</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar() in certifications.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <!-- Un solo <main> per pagina: identifica il contenuto centrale
+         e permette agli screen reader di saltarci direttamente,
+         evitando di rileggere il menu a ogni cambio pagina. -->
+    <main>
+
+        <!-- La classe .fade-in parte trasparente. IntersectionObserver
+             in app.js aggiunge .visible quando la sezione entra nello
+             schermo, e la transizione CSS fa il resto. -->
+        <section class="certs-hero fade-in">
+            <header class="section-header">
+                <!-- Un solo <h1> per pagina: e' il titolo principale
+                     e i motori di ricerca lo usano come tale. -->
+                <h1>Certifications &amp; Skills</h1>
+                <p>Industry-recognized certifications and technical proficiencies that validate my expertise in cloud computing, security, and software development.</p>
+            </header>
+        </section>
+
+        <!-- Contenitore vuoto: le card arrivano da renderCertifications()
+             in certifications.js, che le costruisce dall'array dei dati. -->
+        <section class="certs-section fade-in">
+            <h2 class="section-title">Certifications</h2>
+            <div id="certs-container" class="grid grid--2"></div>
+        </section>
+
+        <section class="skills-section fade-in">
+            <header class="skills-heading">
+                <p class="eyebrow">Core Expertise</p>
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="skills-heading__intro">Cloud architecture, DevOps automation and backend systems built for reliable delivery.</p>
+            </header>
+
+            <!-- Riepilogo statico delle tre aree principali. Sta
+                 nell'HTML e non nel JavaScript perche' e' contenuto
+                 fisso: cosi' e' visibile anche a chi ha JavaScript
+                 disattivato e ai motori di ricerca.
+                 I simboli sono scritti come HTML entity per tenere il
+                 file in ASCII: &#9729; nuvola, &#9881; ingranaggio,
+                 &#9889; fulmine. -->
+            <div class="expertise-strip" aria-label="Core expertise areas">
+                <div class="expertise-strip__item">
+                    <span class="expertise-strip__icon">&#9729;</span>
+                    <div><strong>Cloud Computing</strong><span>AWS &middot; Docker &middot; Linux</span></div>
+                </div>
+                <div class="expertise-strip__item">
+                    <span class="expertise-strip__icon">&#9881;</span>
+                    <div><strong>DevOps</strong><span>CI/CD &middot; Git &middot; Automation</span></div>
+                </div>
+                <div class="expertise-strip__item">
+                    <span class="expertise-strip__icon">&#9889;</span>
+                    <div><strong>Backend</strong><span>Java &middot; Spring &middot; PostgreSQL</span></div>
+                </div>
+            </div>
+
+            <!-- Riempito da renderSkills(), che crea le categorie e
+                 anima le barre di competenza -->
+            <div id="skills-container"></div>
+        </section>
+
+        <!-- ============================================================
+             FORM DI VERIFICA
+
+             Terzo form del progetto, dopo login e contatti. Simula la
+             verifica di una certificazione: i dati non partono verso
+             nessun server, certifications.js li stampa in console.
+             ============================================================ -->
+        <section class="verify-section fade-in">
+            <h2 class="section-title">Verify a Certification</h2>
+            <p class="verify-description">Enter the certification details below to verify its authenticity.</p>
+
+            <form id="certVerifyForm" class="verify-form">
+
+                <div class="form-group">
+                    <label for="certName">Certification Name</label>
+                    <input type="text" id="certName" name="certName" placeholder="e.g. CompTIA Security+" required>
+                    <span class="form-error" id="certNameError">Certification name is required</span>
+                </div>
+
+                <!-- Il placeholder mostra il formato atteso. Il
+                     controllo con espressione regolare sta in
+                     certifications.js, dentro validateCertIdFormat. -->
+                <div class="form-group">
+                    <label for="certId">Certification ID</label>
+                    <input type="text" id="certId" name="certId" placeholder="e.g. COMP001-2024-XXXX" required>
+                    <span class="form-error" id="certIdError">Please enter a valid certification ID</span>
+                </div>
+
+                <!-- La prima option ha value vuoto: cosi' vale come
+                     "non scelto" e il controllo sul campo vuoto la
+                     intercetta come un errore. -->
+                <div class="form-group">
+                    <label for="certOrg">Issuing Organization</label>
+                    <select id="certOrg" name="certOrg" required>
+                        <option value="">-- Select Organization --</option>
+                        <option value="CompTIA">CompTIA</option>
+                        <option value="AWS">AWS</option>
+                        <option value="Microsoft">Microsoft</option>
+                        <option value="Google">Google</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <span class="form-error" id="certOrgError">Please select an issuing organization</span>
+                </div>
+
+                <button type="submit" class="btn btn--primary">Verify Certification</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <!-- app.js definisce Auth, showToast, renderNavbar, renderFooter
+         e initScrollAnimations; certifications.js le usa tutte. -->
+    <script src="js/app.js"></script>
+    <script src="js/certifications.js"></script>
+
+</body>
+</html>
+
+/* ===== contact.html ===== */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Contact Alioune Diagne - Cloud &amp; Backend Developer. Get in touch for collaboration, job opportunities, or project inquiries.">
+    <meta name="keywords" content="Alioune Diagne, Contact, Cloud Developer, Backend Developer, Collaboration, Hire Developer">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Contact | Alioune Diagne</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar("contact") in contact.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <main>
+
+        <section class="contact" id="contact">
+            <h2 class="section__title">Get In Touch</h2>
+            <p class="section__subtitle">Have a question or want to work together?</p>
+
+            <!-- Due colonne affiancate con Flexbox, che le media query
+                 impilano una sopra l'altra sugli schermi stretti. -->
+            <div class="contact-wrapper">
+
+                <div class="contact-form">
+
+                    <!-- novalidate disattiva i messaggi automatici del
+                         browser, che cambiano testo e aspetto da un
+                         browser all'altro. Il controllo lo fa
+                         contact.js, con messaggi sempre uguali. -->
+                    <form id="contactForm" novalidate>
+
+                        <!-- Ogni campo segue lo stesso schema: label
+                             collegata con for, input e messaggio di
+                             errore nascosto. Lo span diventa visibile
+                             quando contact.js gli aggiunge .visible. -->
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+                            <span class="form-error" id="nameError">Please enter your name (at least 2 characters).</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+                            <span class="form-error" id="emailError">Please enter a valid email address.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+                            <span class="form-error" id="subjectError">Please enter a subject.</span>
+                        </div>
+
+                        <!-- maxlength blocca la scrittura oltre i 500
+                             caratteri. Il contatore accanto e' solo
+                             informativo e viene aggiornato da
+                             contact.js a ogni tasto premuto: il limite
+                             lo impone comunque l'attributo. -->
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Write your message here..." rows="6" required maxlength="500"></textarea>
+                            <span class="char-counter" id="charCounter">0/500 characters</span>
+                            <span class="form-error" id="messageError">Please enter a message (at least 10 characters).</span>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Recapiti statici. I simboli sono HTML entity:
+                     &#9993; busta, &#128205; segnaposto,
+                     &#128187; computer, &#9989; spunta. -->
+                <div class="contact-info">
+                    <div class="contact-info-card">
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#9993;</span>
+                            <div>
+                                <span class="contact-info-item__label">Email</span>
+                                <span class="contact-info-item__value">alioune.diagne@email.com</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#128205;</span>
+                            <div>
+                                <span class="contact-info-item__label">Location</span>
+                                <span class="contact-info-item__value">Italy</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#128187;</span>
+                            <div>
+                                <span class="contact-info-item__label">GitHub</span>
+                                <span class="contact-info-item__value">github.com/AliouneDiagne</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-info-item">
+                            <span class="contact-info-item__icon">&#9989;</span>
+                            <div>
+                                <span class="contact-info-item__label">Availability</span>
+                                <span class="contact-info-item__value">Open to opportunities</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>
+
+/* ===== login.html ===== */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- charset per primo: dice al browser come interpretare i byte
+       del file, quindi deve arrivare prima di qualsiasi testo.
+       viewport e' quello che rende utile il responsive design:
+       senza, il telefono finge di essere largo 980px e rimpicciolisce
+       tutto invece di applicare le media query. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Login page for Alioune Diagne's developer portfolio. Sign in to access the full profile and projects.">
+  <meta name="keywords" content="login, portfolio, developer, Alioune Diagne, web development, sign in">
+  <meta name="author" content="Alioune Diagne">
+
+  <title>Login - Alioune Diagne Portfolio</title>
+
+  <!-- Foglio di stile condiviso con tutte le altre pagine: un solo
+       file da caricare, e il browser lo tiene in cache. -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Questa pagina non ha la navbar: durante l'accesso non serve
+       un menu, e la via d'uscita e' il link "Continue as guest".
+       renderNavbar() se ne accorge da sola perche' non trova
+       l'elemento #navbar ed esce senza fare nulla. -->
+  <main class="login-page">
+    <div class="login-card">
+
+      <header>
+        <h1>Welcome Back</h1>
+        <p class="login-subtitle">Sign in to access your profile</p>
+      </header>
+
+      <!-- Il form non ha l'attributo action: non c'e' nessun
+           indirizzo a cui inviare i dati, perche' il submit lo
+           gestisce login.js con preventDefault. -->
+      <form id="loginForm">
+
+        <!-- La label e' collegata all'input tramite for="username",
+             che corrisponde al suo id. Serve a due cose: gli screen
+             reader annunciano il nome del campo, e cliccando sul
+             testo il cursore va dentro l'input.
+             required attiva anche il controllo del browser, ma
+             quello vero lo fa login.js con messaggi coerenti. -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username" required>
+          <span class="form-error" id="usernameError">Username is required</span>
+        </div>
+
+        <!-- type="password" nasconde i caratteri digitati -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <span class="form-error" id="passwordError">Password is required</span>
+        </div>
+
+        <!-- type="submit" fa scattare l'evento submit del form.
+             L'id serve a login.js per cambiare testo e disabilitare
+             il bottone durante l'accesso. -->
+        <button type="submit" class="btn btn--primary" id="submitBtn">Sign In</button>
+      </form>
+
+      <!-- Credenziali di prova in chiaro: il login e' simulato e
+           questa pagina serve a mostrare il meccanismo, non a
+           proteggere qualcosa. -->
+      <div class="login-hint">
+        <small>Demo credentials: <code>alioune</code> / <code>admin123</code></small>
+      </div>
+
+      <div class="login-footer">
+        <a href="index.html" class="guest-link">Continue as guest</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- app.js per primo: definisce Auth e showToast, che login.js
+       usa appena viene eseguito. -->
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>
+
+/* ===== profile.html ===== */
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="Profilo utente - Alioune Diagne Developer Portfolio. Visualizza e modifica le informazioni del tuo account.">
+  <meta name="keywords" content="profilo, developer, portfolio, Alioune Diagne">
+  <meta name="author" content="Alioune Diagne">
+
+  <!-- Questa e' l'unica pagina con noindex: e' un'area riservata,
+       non ha senso farla comparire nei risultati di ricerca. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Profile - AD.dev Portfolio</title>
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- La navbar arriva da renderNavbar() in app.js.
+       aria-label distingue questo nav per gli screen reader. -->
+  <header>
+    <nav id="navbar" class="navbar" aria-label="Navigazione principale"></nav>
+  </header>
+
+  <main class="section">
+    <div class="container">
+
+      <!-- ============================================================
+           I due blocchi seguenti sono le due facce della pagina.
+           profile.js ne mostra uno e nasconde l'altro togliendo o
+           aggiungendo la classe .hidden, in base a Auth.isLoggedIn().
+           Entrambi partono nascosti: cosi' al caricamento non si
+           vede comparire per un istante il blocco sbagliato.
+           ============================================================ -->
+
+      <!-- Visibile solo a chi ha effettuato l'accesso -->
+      <div id="auth-content" class="hidden">
+
+        <!-- Riempiti da profile.js: qui restano vuoti di proposito -->
+        <div id="profile-header"></div>
+        <section id="profile-details"></section>
+
+        <!-- Editor del profilo, chiuso finche' non si preme
+             "Modifica Profilo" nella card Settings -->
+        <section id="edit-section" class="hidden">
+          <div class="card mt-3">
+            <h3>Modifica Profilo</h3>
+
+            <form id="editProfileForm" class="mt-2">
+
+              <!-- Ogni campo ha la stessa struttura: label collegata
+                   con for, input e messaggio di errore nascosto.
+                   Lo span diventa visibile quando profile.js gli
+                   aggiunge la classe .visible. -->
+              <div class="form-group">
+                <label for="editName">Nome completo</label>
+                <input type="text" id="editName" name="name" required>
+                <span class="form-error" id="nameError">Il nome e' obbligatorio.</span>
+              </div>
+
+              <!-- type="email" fa comparire la tastiera giusta sui
+                   telefoni. Il controllo vero lo fa comunque il
+                   JavaScript, che da' messaggi uguali su ogni browser. -->
+              <div class="form-group">
+                <label for="editEmail">Email</label>
+                <input type="email" id="editEmail" name="email" required>
+                <span class="form-error" id="emailError">Inserisci un indirizzo email valido.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="editRole">Ruolo</label>
+                <input type="text" id="editRole" name="role" required>
+                <span class="form-error" id="roleError">Il ruolo e' obbligatorio.</span>
+              </div>
+
+              <!-- type="button" sul secondo bottone: dentro un form
+                   il valore predefinito e' submit, quindi senza
+                   questo attributo "Annulla" invierebbe il form. -->
+              <div class="form-actions">
+                <button type="submit" class="btn btn--primary">Salva modifiche</button>
+                <button type="button" class="btn btn--outline" id="cancelEditBtn">Annulla</button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Visibile a chi non ha effettuato l'accesso -->
+      <div id="guest-content" class="auth-required hidden">
+        <h2>Accesso richiesto</h2>
+        <p>Please log in to view your profile.</p>
+        <a href="login.html" class="btn btn--primary">Vai al Login</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Riempito da renderFooter() in app.js -->
+  <footer id="footer" class="footer"></footer>
+
+  <!-- Gli script stanno in fondo al body: cosi' il browser disegna
+       prima la pagina e poi li esegue, trovando il DOM gia' pronto.
+       L'ordine conta: app.js definisce Auth e showToast, che
+       profile.js usa subito dopo. -->
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+
+</body>
+</html>
+
+/* ===== projects.html ===== */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Alioune Diagne's portfolio - Explore projects across cloud computing, backend development, and artificial intelligence.">
+    <meta name="keywords" content="Alioune Diagne, portfolio, projects, cloud, backend, AI, Java, Python, JavaScript">
+    <meta name="author" content="Alioune Diagne">
+
+    <title>Projects | Alioune Diagne</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Menu generato da renderNavbar("projects") in projects.js -->
+    <header>
+        <nav id="navbar"></nav>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <header class="section-header">
+                <h1>My Projects</h1>
+                <p>Explore my work across cloud, backend, and AI</p>
+            </header>
+
+            <!-- ============================================================
+                 BARRA DEI FILTRI
+
+                 Le label sono collegate ai campi con for="id": senza,
+                 uno screen reader leggerebbe solo "casella di testo"
+                 senza dire cosa scriverci. Il placeholder non basta,
+                 perche' sparisce appena si inizia a digitare.
+                 La classe .sr-only le nasconde alla vista ma le lascia
+                 nel documento per le tecnologie assistive. Con
+                 display:none sparirebbero anche per loro.
+                 ============================================================ -->
+            <div class="filter-bar">
+                <label for="searchInput" class="sr-only">Search projects by name or description</label>
+                <input type="text" id="searchInput" placeholder="Search projects...">
+
+                <label for="filterLanguage" class="sr-only">Filter projects by programming language</label>
+                <select id="filterLanguage">
+                    <option value="All">All</option>
+                    <option value="Java">Java</option>
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="HTML">HTML</option>
+                </select>
+            </div>
+
+            <!-- Contenitore vuoto: renderProjects() in projects.js lo
+                 riempie e lo svuota a ogni cambio di filtro. -->
+            <div id="projects-container" class="grid grid--3"></div>
+
+            <!-- Spinner visibile durante la fetch. A differenza della
+                 home qui non viene rimosso ma solo nascosto, perche'
+                 potrebbe servire di nuovo. -->
+            <div id="loading-spinner" class="spinner">
+                <div class="spinner__circle"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Riempito da renderFooter() in app.js -->
+    <footer id="footer"></footer>
+
+    <script src="js/app.js"></script>
+    <script src="js/projects.js"></script>
+
+</body>
+</html>
+
+/* ===== css/style.css ===== */
+
+/* ============================================================
+   ALIOUNE DIAGNE - DEVELOPER PORTFOLIO
+   style.css - Main Stylesheet
+
+   Concetti CSS dimostrati:
+   - Selettori: elemento, classe (.classe), ID (#id), discendente, figlio (>)
+   - Box Model: margin, padding, border, box-sizing
+   - Flexbox: display:flex, justify-content, align-items, flex-wrap
+   - Responsive Design: media queries (@media)
+   - Animazioni CSS: transition, @keyframes, transform
+   - Variabili CSS (Custom Properties)
+   - Specificita': elemento < classe < ID < inline
+   ============================================================ */
+
+/* ---- CSS Custom Properties (Variabili) ----
+   Definite su :root, accessibili ovunque nel documento.
+   Vantaggio: cambi il colore in un punto e si aggiorna ovunque. */
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-blue: #3b82f6;
+  --accent-cyan: #06b6d4;
+  --accent-gradient: linear-gradient(135deg, #3b82f6, #06b6d4);
+  --success: #22c55e;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --border-color: #334155;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --transition: all 0.3s ease;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-mono: 'Courier New', Courier, monospace;
+  --max-width: 1200px;
+}
+
+/* ---- Reset e Box-Sizing ----
+   box-sizing: border-box fa si' che padding e border siano INCLUSI
+   nella larghezza/altezza totale dell'elemento (vedi Box Model). */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---- Base ----
+   Selettore di elemento: si applica a TUTTI i tag di quel tipo. */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent-cyan);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4 {
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  color: var(--text-secondary);
+  margin-bottom: 1em;
+}
+
+/* ============================================================
+   LAYOUT - Flexbox
+   display: flex crea un contenitore flessibile.
+   justify-content: allinea lungo l'asse principale (orizzontale).
+   align-items: allinea lungo l'asse trasversale (verticale).
+   flex-wrap: wrap permette agli elementi di andare a capo.
+   ============================================================ */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-left: clamp(1rem, 2vw, 1.5rem);
+  padding-right: clamp(1rem, 2vw, 1.5rem);
+}
+
+.section,
+.hero,
+.featured-projects,
+.services,
+.contact,
+.projects-section,
+.certs-hero,
+.certs-section,
+.skills-section,
+.verify-section,
+.login-page {
+  padding-left: clamp(1rem, 2vw, 2rem);
+  padding-right: clamp(1rem, 2vw, 2rem);
+}
+
+/* ============================================================
+   NAVBAR
+   Flexbox: space-between per distribuire logo e menu ai lati opposti.
+   ============================================================ */
+.navbar {
+  background-color: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Selettore discendente (.navbar .container): seleziona .container
+   che si trova DENTRO .navbar, a qualsiasi livello di profondita'. */
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.navbar__logo span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Selettore figlio diretto (.navbar__menu > li): seleziona solo
+   gli <li> che sono figli DIRETTI di .navbar__menu. */
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar__menu > li > a {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.navbar__menu > li > a:hover,
+.navbar__menu > li > a.active {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+
+.navbar__menu > li > a.active {
+  color: var(--accent-blue);
+}
+
+/* Bottone Login/Logout nella navbar */
+.btn-nav-auth {
+  background: var(--accent-gradient);
+  color: white !important;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: var(--radius) !important;
+  font-weight: 600 !important;
+}
+
+.btn-nav-auth:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* Hamburger menu - visibile solo su mobile */
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.navbar__toggle span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: var(--text-primary);
+  transition: var(--transition);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero {
+  padding: 6rem 0 4rem;
+  padding-left: clamp(1rem, 4vw, 4rem);
+  padding-right: clamp(1rem, 4vw, 4rem);
+}
+
+.hero__layout {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.hero__profile {
+  margin: 0;
+  justify-self: center;
+  width: min(100%, 430px);
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transform: rotate(2deg);
+}
+
+.hero__profile-frame {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: calc(var(--radius-lg) - 4px);
+  background: var(--accent-gradient);
+}
+
+.hero__profile img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.hero__profile figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.9rem 0.4rem 0.35rem;
+}
+
+.hero__profile figcaption span {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.hero__subtitle {
+  color: var(--accent-blue);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero__name {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero__description {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 1.5rem auto;
+}
+
+.hero__cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero__content {
+  max-width: 900px;
+  margin: 0;
+  padding-left: clamp(0.75rem, 2vw, 1.5rem);
+  padding-right: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.hero__typing {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-top: 1rem;
+}
+
+/* Typing effect cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1.2em;
+  background-color: var(--accent-blue);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn--primary {
+  background: var(--accent-gradient);
+  color: white;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--accent-blue);
+  border: 2px solid var(--accent-blue);
+}
+
+.btn--outline:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.btn--secondary {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.btn--secondary:hover {
+  background: rgba(148, 163, 184, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn--danger {
+  background-color: var(--error);
+  color: white;
+}
+
+.btn--small {
+  padding: 0.4rem 1rem;
+  font-size: 0.875rem;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section {
+  padding: 4rem 0;
+}
+
+.section__title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.section__subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   CARDS - Componente riutilizzabile
+   Dimostra: Box Model (padding, border, margin), border-radius,
+   box-shadow, transition, transform (hover effect).
+   ============================================================ */
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-blue);
+}
+
+.card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.card__title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+}
+
+.card__description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background-color: rgba(59, 130, 246, 0.15);
+  color: var(--accent-blue);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.tag--cyan {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: var(--accent-cyan);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+.tag--green {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--success);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+.tag--warning {
+  background-color: rgba(245, 158, 11, 0.15);
+  color: var(--warning);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--accent-blue);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.card__link:hover {
+  color: var(--accent-cyan);
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.project-card__media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+.project-card__media--compact {
+  height: 180px;
+}
+
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-card__media img {
+  transform: scale(1.04);
+}
+
+.project-card__content {
+  padding: 1.25rem;
+}
+
+.project-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.project-card__title {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.project-card__language {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--accent-blue);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  white-space: nowrap;
+}
+
+.project-card__description {
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.project-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.project-card__stars {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.project-card__link {
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.featured-projects__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.featured-projects__grid > * {
+  flex: 1 1 320px;
+}
+
+.services__grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.services__card {
+  flex: 1 1 280px;
+  max-width: 360px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.services__card:hover,
+.services__card--expanded {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent-blue);
+}
+
+.services__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.12);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.services__title {
+  margin-bottom: 0.75rem;
+}
+
+.services__description {
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.services__details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.services__details ul {
+  list-style: disc;
+  padding-left: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.services__details li + li {
+  margin-top: 0.45rem;
+}
+
+/* ============================================================
+   GRID LAYOUTS - Flexbox
+   flex-wrap: wrap permette agli elementi di andare a capo.
+   calc() calcola dinamicamente la larghezza.
+   ============================================================ */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.grid--2 > * {
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 280px;
+}
+
+.grid--3 > * {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 280px;
+}
+
+/* ============================================================
+   FORMS
+   Dimostra: selettori di attributo [type="text"], pseudo-classi
+   (:focus, :valid, :invalid), box model su input.
+   ============================================================ */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-family: var(--font-main);
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+/* Stato di errore del campo */
+.form-group input.input-error,
+.form-group textarea.input-error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.form-group input.input-success,
+.form-group textarea.input-success {
+  border-color: var(--success);
+}
+
+.form-error {
+  color: var(--error);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  display: none;
+}
+
+.form-error.visible {
+  display: block;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ============================================================
+   LOGIN PAGE
+   ============================================================ */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
+}
+
+.login-card__title {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.login-card__subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.login-card .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.login-divider::before,
+.login-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.login-hint {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 1.5rem;
+}
+
+.login-hint code {
+  background-color: var(--bg-primary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+}
+
+/* ============================================================
+   TOAST NOTIFICATIONS - Feedback utente
+   position: fixed per posizionare rispetto al viewport.
+   z-index alto per stare sopra tutto.
+   ============================================================ */
+.toast-container {
+  position: fixed;
+  top: 5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  min-width: 300px;
+  max-width: 400px;
+  animation: slideIn 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.toast--success {
+  border-left: 4px solid var(--success);
+}
+
+.toast--error {
+  border-left: 4px solid var(--error);
+}
+
+.toast--warning {
+  border-left: 4px solid var(--warning);
+}
+
+.toast--info {
+  border-left: 4px solid var(--accent-blue);
+}
+
+.toast__icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; transform: translateX(50px); }
+}
+
+/* ============================================================
+   STATS ROW - Sezione statistiche nella home
+   ============================================================ */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 0;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat__number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat__label {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* ============================================================
+   CERTIFICATIONS
+   ============================================================ */
+.cert-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.cert-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cert-card__name {
+  font-size: 1.2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cert-card__issuer {
+  color: var(--accent-blue);
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.cert-card__details {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding-top 0.4s ease;
+}
+
+.cert-card__details.expanded {
+  max-height: 300px;
+  padding-top: 1rem;
+}
+
+.cert-card__details p {
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   SKILLS DASHBOARD - Gerarchia per aree professionali
+   ============================================================ */
+.skills-heading {
+  max-width: 700px;
+  margin-bottom: 2rem;
+}
+
+.eyebrow,
+.skill-category__eyebrow {
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.skills-heading__intro {
+  color: var(--text-secondary);
+  max-width: 580px;
+  margin-top: 0.75rem;
+}
+
+.expertise-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.expertise-strip__item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.1rem;
+  background: rgba(17, 26, 46, 0.72);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+}
+
+.expertise-strip__icon,
+.skill-category__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  color: var(--accent-cyan);
+  background: rgba(34, 211, 238, 0.1);
+  font-size: 1.25rem;
+}
+
+.expertise-strip__item div {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.expertise-strip__item span {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+#skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.skill-category {
+  padding: 1.35rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.skill-category--primary {
+  min-height: 100%;
+}
+
+.skill-category--secondary {
+  opacity: 0.92;
+}
+
+.skill-category__header {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1.1rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.skill-category__header h3 {
+  margin-top: 0.2rem;
+  font-size: 1.12rem;
+}
+
+.skill-category__list {
+  display: grid;
+  gap: 0.25rem;
+  padding-top: 0.65rem;
+}
+
+.skill-item {
+  width: 100%;
+  padding: 0.85rem 0;
+  color: inherit;
+  text-align: left;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  cursor: pointer;
+}
+
+.skill-item:last-child {
+  border-bottom: 0;
+}
+
+.skill-item__topline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill-item__topline > span {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.skill-item strong {
+  color: var(--text-primary);
+  font-size: 0.94rem;
+}
+
+.skill-item small {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+}
+
+.skill-item b {
+  color: var(--accent-blue);
+  font-size: 1rem;
+}
+
+.skill-item__track {
+  display: block;
+  height: 4px;
+  margin-top: 0.65rem;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 99px;
+}
+
+.skill-item__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+  border-radius: inherit;
+  transition: width 0.9s ease;
+}
+
+.skill-item__details {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  opacity: 0;
+  transition: max-height 0.25s ease, opacity 0.25s ease, padding-top 0.25s ease;
+}
+
+.skill-item.is-expanded > .skill-item__details {
+  max-height: 3rem !important;
+  padding-top: 0.65rem;
+  opacity: 1 !important;
+}
+
+/* ============================================================
+   PROFILE PAGE
+   ============================================================ */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: var(--accent-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.12);
+  box-shadow: var(--shadow-lg);
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.profile-info h2 {
+  margin-bottom: 0.25rem;
+}
+
+.profile-info p {
+  margin-bottom: 0.25rem;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: rgba(34, 197, 94, 0.15);
+  color: var(--success);
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   FILTER / SEARCH BAR
+   ============================================================ */
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-bar input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.65rem 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.filter-bar input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+}
+
+.filter-bar select {
+  padding: 0.65rem 1rem;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+/* ============================================================
+   LOADING SPINNER
+   @keyframes: definisce un'animazione CSS.
+   animation: applica l'animazione all'elemento.
+   ============================================================ */
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+
+.spinner__circle {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--bg-tertiary);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 0;
+  margin-top: 4rem;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.footer__links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.footer__links a:hover {
+  color: var(--accent-blue);
+}
+
+/* ============================================================
+   NOT LOGGED IN STATE
+   ============================================================ */
+.auth-required {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.auth-required h2 {
+  margin-bottom: 1rem;
+}
+
+.auth-required p {
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   CONTACT FORM
+   ============================================================ */
+.contact-wrapper {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-info {
+  flex: 0 0 320px;
+  min-width: 280px;
+}
+
+.contact-info-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-info-item:last-child {
+  margin-bottom: 0;
+}
+
+.contact-info-item__icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-info-item__label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+.contact-info-item__value {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+.text-center { text-align: center; }
+.text-accent { color: var(--accent-blue); }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.hidden { display: none !important; }
+
+/* ---- .sr-only (screen reader only) ----
+   Accessibilita': nasconde l'elemento visivamente ma lo lascia
+   leggibile dagli screen reader. Usata per le <label> della barra
+   dei filtri in projects.html. display:none NON andrebbe bene:
+   nasconderebbe l'elemento anche alle tecnologie assistive. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Fade-in animation per gli elementi che appaiono allo scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN - Media Queries
+
+   @media (max-width: 768px): si applica quando lo schermo e'
+   largo al massimo 768px (tablet e mobile).
+
+   La logica e' "mobile-first" quando usi min-width, o "desktop-first"
+   quando usi max-width come qui.
+   ============================================================ */
+@media (max-width: 768px) {
+  .hero__layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero__content {
+    text-align: center;
+  }
+
+  .hero__profile {
+    width: min(100%, 340px);
+    transform: rotate(0deg);
+    order: -1;
+  }
+
+  .navbar__toggle {
+    display: flex;
+  }
+
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background-color: rgba(15, 23, 42, 0.98);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 1rem;
+    gap: 0.25rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 1001;
+  }
+
+  .navbar__menu.open {
+    display: flex;
+  }
+
+  .navbar__menu > li {
+    width: 100%;
+  }
+
+  .navbar__menu > li > a {
+    display: block;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .hero {
+    padding-top: 4rem;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 320px;
+    margin: 2rem auto 0;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+
+  .stats {
+    gap: 1.5rem;
+  }
+
+  .grid--2 > *,
+  .grid--3 > * {
+    flex: 1 1 100%;
+  }
+
+  .featured-projects__grid > * {
+    flex-basis: 100%;
+  }
+
+  .expertise-strip,
+  #skills-container {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-category {
+    padding: 1.1rem;
+  }
+
+  .services__grid {
+    flex-direction: column;
+  }
+
+  .services__card {
+    max-width: 100%;
+  }
+
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .contact-form,
+  .contact-info {
+    min-width: 100%;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .toast {
+    min-width: auto;
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .login-card,
+  .contact-info-card,
+  .card,
+  .cert-card {
+    padding: 1.25rem;
+  }
+
+  .navbar__logo {
+    font-size: 1.25rem;
+  }
+
+  .stat__number {
+    font-size: 2rem;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    width: 100%;
+  }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .grid--3 > * {
+    flex: 1 1 calc(50% - 0.75rem);
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ============================================================
+   ANIMAZIONI CSS - Bonus
+   transition: crea un'animazione tra due stati (es. hover).
+   @keyframes: definisce un'animazione personalizzata.
+   animation: applica un @keyframes con durata, timing, etc.
+   ============================================================ */
+
+/* Effetto pulse sul bottone CTA */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+}
+
+.btn--pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Gradient border animation */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   TITOLI DI SEZIONE (pagine Projects e Certifications)
+   Le pagine index.html e contact.html usano .section__title,
+   projects.html e certifications.html usano .section-header/.section-title.
+   Qui definiamo la seconda coppia per avere titoli coerenti ovunque.
+   ============================================================ */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   EFFETTO TYPING (home)
+   Il testo dei ruoli professionali viene sostituito da home.js.
+   color e font-weight lo distinguono dal resto del paragrafo.
+   ============================================================ */
+.typing-effect {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* ============================================================
+   SPINNER DI CARICAMENTO (home)
+   Contenitore mostrato mentre la Fetch API scarica i progetti.
+   flex-direction: column mette il cerchio sopra e il testo sotto.
+   ============================================================ */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem;
+  width: 100%;
+  color: var(--text-secondary);
+}
+
+/* Il cerchio animato dentro .loading-spinner (home) */
+.loading-spinner .spinner {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 4px solid var(--bg-tertiary);
+  border-top-color: var(--accent-blue);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+/* ============================================================
+   CARD PROGETTO - Metadati e topics (pagina Projects)
+   .card__meta e .card__topics usano Flexbox con flex-wrap
+   per mandare a capo i tag quando lo spazio non basta.
+   ============================================================ */
+.card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.card__language {
+  background-color: var(--bg-tertiary);
+  color: var(--accent-cyan);
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+/* ---- Stato "selezionato" della card ----
+   projects.js fa classList.toggle("card--active") al click:
+   questa regola rende visibile quel cambio di stato. */
+.card--active {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.35);
+}
+
+/* ---- Messaggio "nessun risultato" ----
+   Creato da projects.js quando i filtri non trovano progetti. */
+.no-results {
+  width: 100%;
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+/* ============================================================
+   CARD CERTIFICAZIONE - Header e topics
+   .cert-card__header allinea icona e testo affiancati con Flexbox.
+   ============================================================ */
+.cert-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cert-card__summary {
+  color: var(--accent-blue);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.cert-card__description {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.cert-card__topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.cert-card__topic {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+}
+
+/* ============================================================
+   FORM DI VERIFICA CERTIFICAZIONE
+   max-width + margin auto centrano il form senza usare Flexbox.
+   ============================================================ */
+.verify-description {
+  text-align: center;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.verify-form {
+  max-width: 520px;
+  margin: 0 auto;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+
+.verify-form .btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   PAGINA LOGIN - Sottotitolo e link "Continue as guest"
+   ============================================================ */
+.login-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+.guest-link {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.guest-link:hover {
+  color: var(--accent-cyan);
+}
+
+/* ============================================================
+   ANIMAZIONE SHAKE - Feedback di errore sul login
+   login.js aggiunge la classe .shake al form quando le
+   credenziali sono errate, e la rimuove dopo 500ms.
+   translateX alterna il form a destra e a sinistra.
+   ============================================================ */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+  animation: shake 0.5s ease;
+}
+
+/* ============================================================
+   CAMPO IN FOCUS - Feedback visivo sugli input
+   contact.js aggiunge .input-focused sull'evento "focus"
+   e la rimuove sull'evento "blur".
+   ============================================================ */
+.input-focused {
+  border-color: var(--accent-cyan) !important;
+  box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.15);
+}
+
+/* ============================================================
+   CONTATORE DI CARATTERI (textarea del form contatti)
+   contact.js aggiunge .char-counter--warning oltre il 90%
+   dei caratteri disponibili: il colore passa ad arancione.
+   ============================================================ */
+.char-counter {
+  display: block;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+  transition: color 0.3s ease;
+}
+
+.char-counter--warning {
+  color: var(--warning);
+  font-weight: 600;
+}
+
+/* ============================================================
+   MESSAGGIO DI SUCCESSO (form contatti)
+   Il div viene creato dinamicamente da contact.js dopo un invio
+   valido, e rimosso dopo 5 secondi con setTimeout.
+   L'animazione slideIn e' la stessa gia' usata dai toast.
+   ============================================================ */
+.success-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  background-color: rgba(34, 197, 94, 0.1);
+  border: 1px solid var(--success);
+  border-left-width: 4px;
+  border-radius: var(--radius);
+  animation: slideIn 0.4s ease;
+}
+
+.success-message__icon {
+  color: var(--success);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.success-message__text {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   PAGINA PROFILO: LISTA ATTIVITA' E AZIONI
+
+   Queste classi sostituiscono gli stili che prima profile.js
+   scriveva direttamente sugli elementi con element.style.
+   Tenerli qui separa la presentazione dalla logica: il
+   JavaScript decide cosa mostrare, il CSS come mostrarlo.
+   ============================================================ */
+.profile-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  /* La lista e' dentro un <ul>: togliamo i pallini di default,
+     perche' qui la separazione la fanno gia' i bordi. */
+  list-style: none;
+}
+
+.profile-activity__item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* L'ultima voce non ha bisogno della riga di separazione. */
+.profile-activity__item:last-child {
+  border-bottom: none;
+}
+
+.profile-activity__text {
+  /* display block manda il testo e l'orario su due righe. */
+  display: block;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.profile-activity__time {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+/* Bottoni della card Settings incolonnati a tutta larghezza. */
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Riga di bottoni del form di modifica profilo. Sostituisce lo
+   stile inline che stava nell'attributo style di profile.html. */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* ===== js/app.js ===== */
+
+/* ============================================================
+   app.js
+   Modulo condiviso, incluso da tutte le pagine prima degli
+   script specifici. Contiene quattro cose che servono ovunque:
+   il sistema di login simulato, i toast di feedback, la navbar
+   e il footer generati via JavaScript.
+
+   Va caricato per primo perche' gli altri file usano Auth,
+   showToast, renderNavbar e renderFooter definiti qui.
+   ============================================================ */
+
+"use strict";
+
+/* Chiavi con cui salviamo i dati nel localStorage.
+   Sono const perche' non cambiano mai: se le scrivessi a mano
+   in ogni punto del codice basterebbe un errore di battitura
+   per rompere il login senza accorgersene. */
+const AUTH_KEY = "portfolio_auth";
+const USER_KEY = "portfolio_user";
+
+/* ============================================================
+   AUTENTICAZIONE SIMULATA
+
+   Non c'e' un server: lo stato di login vive nel localStorage
+   del browser, che conserva i dati anche dopo la chiusura della
+   pagina (a differenza del sessionStorage, che li perde).
+
+   Auth e' un oggetto che raggruppa dati e funzioni collegate.
+   Cosi' il resto del codice chiama Auth.login() invece di avere
+   variabili sparse in giro.
+   ============================================================ */
+
+const Auth = {
+  /* Utenti finti. In un'applicazione reale sarebbero su un
+     database e la password non viaggerebbe mai in chiaro. */
+  users: [
+    { username: "alioune", password: "admin123", name: "Alioune Diagne", email: "alioune.diagne@email.com", role: "Cloud & Backend Developer" },
+    { username: "guest", password: "guest123", name: "Guest User", email: "guest@email.com", role: "Visitor" }
+  ],
+
+  /**
+   * Controlla le credenziali e, se sono giuste, salva la sessione.
+   * @param {string} username
+   * @param {string} password
+   * @returns {object|null} i dati dell'utente, oppure null se le credenziali sono sbagliate
+   */
+  login(username, password) {
+    /* find() scorre l'array e restituisce il primo elemento che
+       soddisfa la condizione, oppure undefined se non trova nulla. */
+    const user = this.users.find(
+      (u) => u.username === username && u.password === password
+    );
+
+    if (user) {
+      /* Salviamo una copia dell'utente senza la password: non ha
+         senso tenere in memoria un dato che non serve piu'. */
+      const userData = { username: user.username, name: user.name, email: user.email, role: user.role };
+
+      localStorage.setItem(AUTH_KEY, "true");
+
+      /* localStorage memorizza solo stringhe, quindi l'oggetto va
+         convertito in JSON prima di salvarlo. */
+      localStorage.setItem(USER_KEY, JSON.stringify(userData));
+      return userData;
+    }
+
+    return null;
+  },
+
+  /** Chiude la sessione cancellando i dati salvati. */
+  logout() {
+    localStorage.removeItem(AUTH_KEY);
+    localStorage.removeItem(USER_KEY);
+  },
+
+  /** @returns {boolean} true se esiste una sessione attiva. */
+  isLoggedIn() {
+    /* getItem restituisce null se la chiave non esiste, quindi il
+       confronto con "true" copre anche il caso "mai loggato". */
+    return localStorage.getItem(AUTH_KEY) === "true";
+  },
+
+  /** @returns {object|null} i dati dell'utente loggato. */
+  getUser() {
+    const data = localStorage.getItem(USER_KEY);
+
+    /* JSON.parse fa il contrario di JSON.stringify: dalla stringa
+       salvata ricostruisce l'oggetto JavaScript. */
+    return data ? JSON.parse(data) : null;
+  },
+
+  /**
+   * Aggiorna i dati dell'utente loggato e li riscrive nel localStorage.
+   * Serve alla pagina profilo: senza questo metodo le modifiche
+   * resterebbero solo a schermo e sparirebbero al reload.
+   * @param {object} updates proprieta' da aggiornare, es. { name, email, role }
+   * @returns {object|null} l'utente aggiornato, null se nessuno e' loggato
+   */
+  updateUser(updates) {
+    const current = this.getUser();
+    if (!current) return null;
+
+    /* Lo spread operator copia tutte le proprieta' di current e poi
+       sovrascrive solo quelle presenti in updates. Cosi' non perdiamo
+       i campi che il form non modifica, come username. */
+    const updated = { ...current, ...updates };
+
+    localStorage.setItem(USER_KEY, JSON.stringify(updated));
+    return updated;
+  }
+};
+
+/* ============================================================
+   TOAST DI FEEDBACK
+
+   Messaggio temporaneo in alto a destra. Lo usiamo al posto di
+   alert() perche' alert blocca tutta la pagina finche' l'utente
+   non clicca, mentre il toast sparisce da solo.
+   ============================================================ */
+
+/**
+ * Mostra un messaggio temporaneo all'utente.
+ * @param {string} message testo da mostrare
+ * @param {string} type "success", "error", "warning" o "info"
+ */
+function showToast(message, type = "info") {
+  /* Il container esiste solo dopo il primo toast, quindi lo cerchiamo
+     e lo creiamo al volo se manca. E' let perche' viene riassegnato. */
+  let container = document.querySelector(".toast-container");
+
+  if (!container) {
+    container = document.createElement("div");
+    container.className = "toast-container";
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement("div");
+
+  /* La classe modificatrice decide il colore del bordo via CSS. */
+  toast.className = `toast toast--${type}`;
+
+  /* Le icone sono scritte come HTML entity, come nel resto del
+     progetto: il file sorgente resta in ASCII e il browser le
+     converte nei simboli corrispondenti. */
+  const icons = { success: "&#10003;", error: "&#10007;", warning: "&#9888;", info: "&#8505;" };
+
+  /* Se il tipo passato non esiste nella mappa, icons[type] vale
+     undefined e l'operatore || fa scattare il valore di riserva. */
+  const icon = icons[type] || icons.info;
+
+  toast.innerHTML = `
+    <span class="toast__icon">${icon}</span>
+    <span>${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  /* setTimeout esegue la funzione una sola volta dopo il ritardo
+     indicato in millisecondi. Il controllo su parentNode evita
+     l'errore se il toast fosse gia' stato rimosso. */
+  setTimeout(() => {
+    if (toast.parentNode) {
+      toast.parentNode.removeChild(toast);
+    }
+  }, 3000);
+}
+
+/* ============================================================
+   NAVBAR
+
+   Il menu e' scritto una volta sola qui e generato via JavaScript
+   in ogni pagina. Se fosse copiato nell'HTML di tutte le pagine,
+   aggiungere una voce vorrebbe dire modificare sei file.
+   ============================================================ */
+
+/**
+ * Genera il menu di navigazione e collega i suoi eventi.
+ * @param {string} currentPage nome della pagina corrente, per evidenziarla
+ */
+function renderNavbar(currentPage) {
+  const nav = document.getElementById("navbar");
+
+  /* La pagina di login non ha la navbar: usciamo subito invece di
+     andare in errore su un elemento che non esiste. */
+  if (!nav) return;
+
+  const isLogged = Auth.isLoggedIn();
+
+  /* I template literal (backtick) permettono stringhe su piu' righe
+     e l'interpolazione con ${}. Qui li usiamo per costruire il menu
+     e per cambiarlo in base allo stato di login: da sloggati compare
+     Login, da loggati compaiono Profile e Logout. */
+  nav.innerHTML = `
+    <div class="container">
+      <a href="index.html" class="navbar__logo">AD<span>.dev</span></a>
+      <button class="navbar__toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar__menu" id="navMenu">
+        <li><a href="index.html" class="${currentPage === 'home' ? 'active' : ''}">Home</a></li>
+        <li><a href="projects.html" class="${currentPage === 'projects' ? 'active' : ''}">Projects</a></li>
+        <li><a href="certifications.html" class="${currentPage === 'certifications' ? 'active' : ''}">Certifications</a></li>
+        <li><a href="contact.html" class="${currentPage === 'contact' ? 'active' : ''}">Contact</a></li>
+        ${isLogged ? `<li><a href="profile.html" class="${currentPage === 'profile' ? 'active' : ''}">Profile</a></li>` : ''}
+        <li>
+          ${isLogged
+            ? '<a href="#" class="btn-nav-auth" id="navLogout">Logout</a>'
+            : '<a href="login.html" class="btn-nav-auth">Login</a>'
+          }
+        </li>
+      </ul>
+    </div>
+  `;
+
+  /* Gli elementi vanno cercati dopo aver scritto innerHTML: prima
+     di quella riga il bottone e la lista non esistono nel DOM. */
+  const toggle = document.getElementById("navToggle");
+  const menu = document.getElementById("navMenu");
+
+  /* Menu hamburger. classList.toggle aggiunge la classe se manca e
+     la toglie se c'e', quindi un solo listener apre e chiude. */
+  toggle.addEventListener("click", () => {
+    menu.classList.toggle("open");
+  });
+
+  /* Event delegation: un solo listener sulla lista invece di uno per
+     ogni link. L'evento click parte dal link e risale ai genitori
+     (bubbling), quindi qui leggiamo e.target per sapere cosa e'
+     stato cliccato davvero. Su mobile serve a chiudere il menu
+     dopo la scelta di una voce. */
+  menu.addEventListener("click", (e) => {
+    if (e.target.tagName === "A") {
+      menu.classList.remove("open");
+    }
+  });
+
+  /* Il bottone Logout esiste solo se l'utente e' loggato. */
+  const logoutBtn = document.getElementById("navLogout");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      /* Il logout e' un tag <a>: senza preventDefault il browser
+         seguirebbe l'href e ricaricherebbe la pagina. */
+      e.preventDefault();
+
+      Auth.logout();
+      showToast("Logout effettuato con successo", "success");
+
+      /* Un secondo di attesa serve solo a far leggere il toast prima
+         che la pagina cambi. */
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 1000);
+    });
+  }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+/** Genera il footer, uguale in tutte le pagine che hanno #footer. */
+function renderFooter() {
+  const footer = document.getElementById("footer");
+  if (!footer) return;
+
+  /* L'anno e' calcolato a runtime, cosi' non va aggiornato a mano. */
+  const year = new Date().getFullYear();
+
+  /* Sui link esterni target="_blank" apre una nuova scheda e
+     rel="noopener noreferrer" impedisce alla pagina aperta di
+     accedere a questa tramite window.opener. */
+  footer.innerHTML = `
+    <div class="container">
+      <p class="footer__text">&copy; ${year} Alioune Diagne. All rights reserved.</p>
+      <div class="footer__links">
+        <a href="https://github.com/AliouneDiagne" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/alioune-diagne-328b042b0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   ANIMAZIONI ALLO SCROLL
+   ============================================================ */
+
+/**
+ * Fa comparire gli elementi con classe .fade-in quando entrano
+ * nello schermo. Usiamo IntersectionObserver invece dell'evento
+ * scroll perche' scroll scatta centinaia di volte al secondo e
+ * costringe a calcolare la posizione a mano, mentre l'observer
+ * avvisa solo quando la visibilita' cambia davvero.
+ */
+function initScrollAnimations() {
+  const elements = document.querySelectorAll(".fade-in");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      /* entries contiene solo gli elementi la cui visibilita' e'
+         cambiata rispetto al controllo precedente. */
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          /* La classe .visible attiva la transizione definita nel CSS. */
+          entry.target.classList.add("visible");
+
+          /* L'animazione va fatta una volta sola: smettiamo di
+             osservare l'elemento gia' comparso. */
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 } // scatta quando almeno il 10% e' visibile
+  );
+
+  elements.forEach((el) => observer.observe(el));
+}
+
+/* ============================================================
+   AVVIO
+
+   DOMContentLoaded scatta quando l'HTML e' stato letto e il DOM
+   costruito, senza aspettare immagini e risorse esterne come fa
+   invece l'evento load. E' il momento giusto per manipolare gli
+   elementi: prima non esisterebbero ancora.
+
+   Qui restano solo le parti comuni a tutte le pagine. La navbar
+   la chiama ogni pagina passando il proprio nome.
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderFooter();
+  initScrollAnimations();
+});
+
+/* ===== js/home.js ===== */
+
+/* ============================================================
+   home.js
+   Logica della homepage: effetto typing, contatori animati,
+   caricamento dei progetti dalla GitHub API e card espandibili
+   della sezione "What I Do".
+   ============================================================ */
+
+"use strict";
+
+/* Le funzioni chiamate qui sotto sono definite piu' avanti come
+   const con arrow function, quindi non subiscono l'hoisting delle
+   function tradizionali. Il codice funziona lo stesso perche' il
+   callback di DOMContentLoaded parte dopo che tutto il file e'
+   stato letto, quando le const esistono gia'. */
+document.addEventListener("DOMContentLoaded", () => {
+  /* Componenti condivisi definiti in app.js. Il parametro "home"
+     dice alla navbar quale voce evidenziare. */
+  renderNavbar("home");
+  renderFooter();
+
+  initTypingEffect();
+  initStatsAnimation();
+  loadFeaturedProjects();
+  initServiceCards();
+});
+
+/* ============================================================
+   EFFETTO TYPING
+
+   Cambia il ruolo mostrato nell'hero ogni due secondi.
+   ============================================================ */
+
+const initTypingEffect = () => {
+  const roles = [
+    "Cloud Developer",
+    "Backend Engineer",
+    "AWS Certified",
+    "Security Specialist"
+  ];
+
+  const typingElement = document.getElementById("typing-text");
+
+  /* Uscita anticipata se l'elemento non c'e'. Senza questo
+     controllo la riga successiva darebbe errore su null. */
+  if (!typingElement) return;
+
+  let currentIndex = 0;
+
+  /* Mostriamo subito il primo ruolo: altrimenti lo spazio
+     resterebbe vuoto per i primi due secondi. */
+  typingElement.textContent = roles[currentIndex];
+
+  /* setInterval ripete la funzione a ogni intervallo, a differenza
+     di setTimeout che la esegue una volta sola.
+     L'operatore modulo (%) riporta l'indice a 0 dopo l'ultimo
+     ruolo, cosi' il ciclo non esce mai dai limiti dell'array. */
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % roles.length;
+    typingElement.textContent = roles[currentIndex];
+  }, 2000);
+};
+
+/* ============================================================
+   CONTATORI ANIMATI
+
+   I numeri della sezione statistiche salgono da 0 al valore
+   finale. Il valore sta nell'HTML come attributo data-target,
+   non nel JavaScript: cosi' per cambiare una statistica si
+   modifica il markup senza toccare il codice.
+   ============================================================ */
+
+const initStatsAnimation = () => {
+  const statNumbers = document.querySelectorAll(".stat__number");
+
+  statNumbers.forEach((stat) => {
+    /* dataset legge gli attributi data-*. parseInt lo converte in
+       numero, perche' gli attributi HTML sono sempre stringhe e
+       "6" + 1 darebbe "61" invece di 7. Il secondo argomento e' la
+       base decimale, per evitare interpretazioni diverse. */
+    const target = parseInt(stat.dataset.target, 10);
+
+    /* Suffisso opzionale, ad esempio il "+" di "8+". Se manca,
+       dataset.suffix e' undefined e usiamo la stringa vuota. */
+    const suffix = stat.dataset.suffix || "";
+
+    let current = 0;
+
+    /* Trenta passi da 50ms fanno circa un secondo e mezzo di
+       animazione, indipendentemente da quanto e' grande il numero.
+       Math.ceil evita che un incremento sotto 1 blocchi il conteggio. */
+    const increment = Math.ceil(target / 30);
+
+    const counter = setInterval(() => {
+      current += increment;
+
+      if (current >= target) {
+        /* L'ultimo passo puo' superare il target: forziamo il
+           valore esatto e fermiamo il timer con clearInterval.
+           Senza clearInterval l'intervallo continuerebbe a girare
+           a vuoto per tutta la vita della pagina. */
+        current = target;
+        stat.textContent = `${current}${suffix}`;
+        clearInterval(counter);
+      } else {
+        stat.textContent = `${current}${suffix}`;
+      }
+    }, 50);
+  });
+};
+
+/* ============================================================
+   DATI DI RISERVA
+
+   La GitHub API puo' non rispondere: rete assente, oppure il
+   limite di 60 richieste all'ora per indirizzo IP superato.
+   In quel caso mostriamo questi progetti invece di lasciare la
+   sezione vuota. Hanno gli stessi nomi di proprieta' della
+   risposta reale, cosi' la funzione di rendering non cambia.
+   ============================================================ */
+
+const fallbackProjects = [
+  {
+    name: "BodyPoseRec",
+    description: "Computer Vision application for body pose recognition using machine learning techniques and real-time video processing.",
+    html_url: "https://github.com/AliouneDiagne/BodyPoseRec",
+    language: "Python",
+    stargazers_count: 0,
+    image: "assets/BodyPoseRec.png"
+  },
+  {
+    name: "ridfix-backend",
+    description: "Backend REST API for the Ridfix platform. Built with Java Spring Boot, featuring authentication, CRUD operations, and database integration.",
+    html_url: "https://github.com/AliouneDiagne/ridfix-backend",
+    language: "Java",
+    stargazers_count: 0,
+    image: "assets/ridfix-backend.png"
+  },
+  {
+    name: "LuxCommand",
+    description: "Application demonstrating Object-Oriented Design Patterns including Command, Observer, and Strategy patterns in Java.",
+    html_url: "https://github.com/AliouneDiagne/LuxCommand",
+    language: "Java",
+    stargazers_count: 0,
+    image: "assets/LuxCommand.jpg"
+  },
+  {
+    name: "ridfix-ecommerce",
+    description: "Full-stack e-commerce application with product catalog, shopping cart, and user authentication built with React.",
+    html_url: "https://github.com/AliouneDiagne/ridfix-ecommerce",
+    language: "React",
+    stargazers_count: 0,
+    image: "assets/ridfix-ecommerce.png"
+  },
+  {
+    name: "ProgammingPrincipleExam",
+    description: "Collection of programming exercises demonstrating core programming principles, data structures, and algorithms in Java.",
+    html_url: "https://github.com/AliouneDiagne/ProgammingPrincipleExam",
+    language: "Java",
+    stargazers_count: 0,
+    image: "assets/ProgammingPrincipleExam.png"
+  }
+];
+
+/* La GitHub API non conosce le anteprime locali. Questa mappa
+   collega il nome del repository alla sua immagine: cercare in un
+   oggetto e' immediato e aggiungere un progetto costa una riga. */
+const projectImages = {
+  BodyPoseRec: "assets/BodyPoseRec.png",
+  "ridfix-backend": "assets/ridfix-backend.png",
+  LuxCommand: "assets/LuxCommand.jpg",
+  "ridfix-ecommerce": "assets/ridfix-ecommerce.png",
+  ProgammingPrincipleExam: "assets/ProgammingPrincipleExam.png"
+};
+
+/* ============================================================
+   CARICAMENTO PROGETTI DALLA GITHUB API
+
+   async/await e' il modo moderno di gestire le Promise: il codice
+   si legge dall'alto in basso come se fosse sincrono, invece di
+   incatenare .then(). Gli errori si intercettano con try/catch
+   come per il codice normale.
+   ============================================================ */
+
+const loadFeaturedProjects = async () => {
+  const projectsGrid = document.getElementById("projects-grid");
+  const spinner = document.getElementById("projects-spinner");
+
+  /* let perche' il valore viene assegnato o nel try o nel catch. */
+  let projects;
+
+  try {
+    /* fetch restituisce una Promise che si risolve con la Response.
+       await mette in pausa questa funzione, non tutta la pagina:
+       il resto dell'interfaccia continua a rispondere. */
+    const response = await fetch(
+      "https://api.github.com/users/AliouneDiagne/repos"
+    );
+
+    /* fetch considera un errore solo la rete caduta: una risposta
+       404 o 403 arriva comunque come Response. Il controllo su
+       response.ok verifica che lo status sia nell'intervallo 200-299
+       e trasforma il resto in un'eccezione per il catch. */
+    if (!response.ok) {
+      throw new Error(`Errore HTTP: ${response.status}`);
+    }
+
+    /* Anche json() e' asincrono: il corpo della risposta puo'
+       arrivare a pezzi e va atteso per intero. */
+    const repos = await response.json();
+
+    projects = repos
+      /* Ordine decrescente per data: sottraendo due Date si
+         ottiene la differenza in millisecondi, che e' il numero
+         che sort() si aspetta come criterio. */
+      .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+      .slice(0, 3)
+      /* map crea un nuovo array senza modificare l'originale.
+         Lo spread copia le proprieta' del repository e aggiunge
+         l'anteprima locale presa dalla mappa. */
+      .map((project) => ({
+        ...project,
+        image: projectImages[project.name] || "assets/profile.png"
+      }));
+  } catch (error) {
+    /* Un solo catch copre sia l'errore di rete sia il throw qui
+       sopra. console.error lascia la traccia per il debug, mentre
+       all'utente mostriamo un messaggio comprensibile. */
+    console.error("Errore nel caricamento dei progetti da GitHub:", error);
+
+    projects = fallbackProjects.slice(0, 3);
+
+    showToast("Progetti caricati dalla copia locale", "warning");
+  } finally {
+    /* finally viene eseguito in ogni caso, con o senza errore.
+       Lo spinner va tolto sempre: metterlo nel try lo lascerebbe
+       girare per sempre quando la chiamata fallisce. */
+    if (spinner) {
+      spinner.remove();
+    }
+  }
+
+  renderProjectCards(projects, projectsGrid);
+};
+
+/* ============================================================
+   CREAZIONE DELLE CARD
+
+   Le card non esistono nell'HTML: le costruiamo qui a partire dai
+   dati, quindi il numero di progetti mostrati dipende solo dalla
+   risposta dell'API.
+   ============================================================ */
+
+const renderProjectCards = (projects, container) => {
+  projects.forEach((project) => {
+    /* Destructuring: estrae le proprieta' dell'oggetto in variabili
+       con una sola istruzione. I due punti rinominano il campo,
+       perche' html_url e stargazers_count sono i nomi usati da
+       GitHub ma url e stars si leggono meglio qui dentro. */
+    const {
+      name,
+      description,
+      html_url: url,
+      language,
+      stargazers_count: stars,
+      image
+    } = project;
+
+    /* article e non div: e' un contenuto autonomo e ha senso da
+       solo, che e' esattamente il criterio del tag semantico. */
+    const card = document.createElement("article");
+
+    /* La classe visible viene aggiunta subito insieme a fade-in:
+       queste card nascono dopo che IntersectionObserver ha gia'
+       finito il suo giro, quindi senza visible resterebbero
+       trasparenti per sempre. */
+    card.classList.add("project-card", "fade-in", "visible");
+
+    /* loading="lazy" rimanda il download delle immagini fuori
+       schermo, cosi' la pagina si apre prima. */
+    card.innerHTML = `
+      <div class="project-card__media">
+        <img src="${image || 'assets/profile.png'}" alt="${name} project preview" loading="lazy">
+      </div>
+      <div class="project-card__content">
+        <div class="project-card__header">
+          <h3 class="project-card__title">${name}</h3>
+          <span class="project-card__language">${language || "N/A"}</span>
+        </div>
+        <p class="project-card__description">
+          ${description || "No description available."}
+        </p>
+        <div class="project-card__footer">
+          <span class="project-card__stars">${stars || 0} stars</span>
+          <a href="${url}" target="_blank" rel="noopener noreferrer"
+             class="project-card__link">
+            View on GitHub &rarr;
+          </a>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+};
+
+/* ============================================================
+   CARD "WHAT I DO"
+
+   Un click apre i dettagli e chiude le altre card, come in una
+   fisarmonica. I dettagli sono gia' nell'HTML con l'attributo
+   hidden: cosi' restano leggibili dai motori di ricerca e dagli
+   screen reader anche prima del click.
+   ============================================================ */
+
+const initServiceCards = () => {
+  const serviceCards = document.querySelectorAll(".services__card");
+
+  serviceCards.forEach((card) => {
+    card.addEventListener("click", (event) => {
+      const details = card.querySelector(".services__details");
+
+      if (!details) return;
+
+      /* hidden e' una proprieta' booleana: assegnarle false
+         equivale a togliere l'attributo dall'HTML. */
+      if (details.hidden) {
+        /* Prima chiudiamo le altre, altrimenti resterebbero
+           aperte tutte insieme e la sezione diventerebbe lunga. */
+        serviceCards.forEach((otherCard) => {
+          const otherDetails = otherCard.querySelector(".services__details");
+
+          if (otherDetails && otherCard !== card) {
+            otherDetails.hidden = true;
+            otherCard.classList.remove("services__card--expanded");
+          }
+        });
+
+        details.hidden = false;
+        card.classList.add("services__card--expanded");
+      } else {
+        /* Secondo click sulla stessa card: la richiude. */
+        details.hidden = true;
+        card.classList.remove("services__card--expanded");
+      }
+    });
+  });
+};
+
+/* ===== js/certifications.js ===== */
+
+/* ============================================================
+   certifications.js
+   Pagina certificazioni: card espandibili, dashboard delle
+   competenze con barre animate e form di verifica.
+
+   Dati e presentazione sono separati. Gli array qui sotto
+   descrivono solo il contenuto; le funzioni di rendering lo
+   trasformano in HTML. Per aggiungere una certificazione basta
+   una voce nell'array, senza toccare il resto del codice.
+   ============================================================ */
+
+"use strict";
+
+/* Icone e separatori non sono scritti come caratteri speciali ma
+   come escape Unicode e HTML entity: il file resta in puro ASCII e
+   non dipende dalla codifica con cui viene aperto.
+   \u{FE0F} chiede al browser la versione a colori del simbolo,
+   &middot; e' il punto centrale che separa le voci. */
+
+const certifications = [
+  {
+    name: "CompTIA Security+",
+    issuer: "CompTIA",
+    date: "2024",
+    icon: "\u{1F6E1}\u{FE0F}",
+    description: "Industry-leading certification validating baseline security skills. Covers network security, threat management, cryptography, identity management, and security infrastructure.",
+    topics: ["Network Security", "Threat Analysis", "Cryptography", "Risk Management"]
+  },
+  {
+    name: "AWS Solutions Architect",
+    issuer: "Amazon Web Services",
+    date: "2024",
+    icon: "\u{2601}\u{FE0F}",
+    description: "Professional certification for designing distributed systems on AWS. Covers EC2, S3, Lambda, VPC, IAM, CloudFormation, and architectural best practices.",
+    topics: ["Cloud Architecture", "AWS Services", "Scalability", "High Availability"]
+  }
+];
+
+/* Competenze raggruppate per area. La proprieta' priority decide
+   quanto risalto dare alla categoria nel CSS, mentre percentage
+   guida la lunghezza della barra. */
+
+const skills = [
+  {
+    name: "Cloud & Infrastructure",
+    icon: "\u{2601}",
+    priority: "primary",
+    skills: [
+      { name: "AWS", label: "Cloud infrastructure", percentage: 85, details: "EC2 &middot; S3 &middot; IAM &middot; VPC &middot; CloudWatch" },
+      { name: "Linux", label: "Systems administration", percentage: 82, details: "CLI &middot; permissions &middot; processes &middot; networking" },
+      { name: "Docker", label: "Containerization", percentage: 80, details: "Images &middot; containers &middot; Compose &middot; registries" },
+      { name: "Kubernetes", label: "Orchestration", percentage: 72, details: "Deployments &middot; services &middot; config &middot; scaling" },
+      { name: "Terraform", label: "Infrastructure as Code", percentage: 70, details: "Providers &middot; modules &middot; state &middot; planning" },
+      { name: "Networking", label: "Network foundations", percentage: 72, details: "TCP/IP &middot; DNS &middot; HTTP &middot; security groups" }
+    ]
+  },
+  {
+    name: "DevOps & Automation",
+    icon: "\u{2699}",
+    priority: "primary",
+    skills: [
+      { name: "Git / GitHub", label: "Version control", percentage: 88, details: "Branches &middot; pull requests &middot; workflows" },
+      { name: "CI/CD", label: "Continuous delivery", percentage: 80, details: "Builds &middot; tests &middot; releases &middot; pipelines" },
+      { name: "GitHub Actions", label: "Workflow automation", percentage: 78, details: "Jobs &middot; runners &middot; secrets &middot; artifacts" },
+      { name: "Jenkins", label: "Pipeline automation", percentage: 70, details: "Agents &middot; stages &middot; build automation" },
+      { name: "Infrastructure as Code", label: "Repeatable environments", percentage: 70, details: "Declarative config &middot; versioned infrastructure" }
+    ]
+  },
+  {
+    name: "Backend Development",
+    icon: "\u{26A1}",
+    priority: "primary",
+    skills: [
+      { name: "Java", label: "Backend engineering", percentage: 90, details: "OOP &middot; design patterns &middot; enterprise services" },
+      { name: "Spring Boot", label: "Application framework", percentage: 85, details: "REST &middot; security &middot; dependency injection" },
+      { name: "Python", label: "Automation and services", percentage: 80, details: "APIs &middot; scripting &middot; data processing" },
+      { name: "Node.js", label: "Server-side JavaScript", percentage: 75, details: "Services &middot; async I/O &middot; APIs" },
+      { name: "REST APIs", label: "Service design", percentage: 88, details: "Resources &middot; authentication &middot; documentation" },
+      { name: "PostgreSQL", label: "Relational data", percentage: 85, details: "SQL &middot; schemas &middot; queries &middot; optimization" }
+    ]
+  },
+  {
+    name: "Frontend Development",
+    icon: "\u{25C7}",
+    priority: "secondary",
+    skills: [
+      { name: "JavaScript", label: "Browser applications", percentage: 75, details: "DOM &middot; Fetch API &middot; events &middot; modules" },
+      { name: "HTML/CSS", label: "Accessible interfaces", percentage: 75, details: "Semantic HTML &middot; responsive CSS &middot; layouts" },
+      { name: "React", label: "Component interfaces", percentage: 65, details: "Components &middot; state &middot; modern UI patterns" }
+    ]
+  }
+];
+
+/* ============================================================
+   CARD DELLE CERTIFICAZIONI
+   ============================================================ */
+
+/** Crea una card per ogni certificazione e la rende espandibile. */
+const renderCertifications = () => {
+  const container = document.getElementById("certs-container");
+  if (!container) return;
+
+  certifications.forEach((cert) => {
+    const card = document.createElement("div");
+
+    /* fade-in insieme a visible: queste card nascono dopo che
+       IntersectionObserver ha gia' controllato la pagina, quindi
+       senza visible resterebbero invisibili. */
+    card.className = "cert-card fade-in visible";
+
+    card.innerHTML = `
+      <div class="cert-card__header">
+        <span class="cert-card__icon">${cert.icon}</span>
+        <div>
+          <h3 class="cert-card__name">${cert.name}</h3>
+          <p class="cert-card__issuer">${cert.issuer} &mdash; ${cert.date}</p>
+        </div>
+      </div>
+      <p class="cert-card__summary">Click to see details</p>
+      <div class="cert-card__details">
+        <p class="cert-card__description">${cert.description}</p>
+        <div class="cert-card__topics">
+          ${cert.topics.map((topic) => `<span class="cert-card__topic">${topic}</span>`).join("")}
+        </div>
+      </div>
+    `;
+
+    /* Il listener va aggiunto qui, non fuori dal ciclo: ogni card
+       deve aprire i propri dettagli, e la variabile card cambia a
+       ogni giro. */
+    card.addEventListener("click", () => {
+      const details = card.querySelector(".cert-card__details");
+
+      /* Il CSS anima max-height tra 0 e un valore pieno. Con
+         display:none non ci sarebbe nessuna transizione, perche'
+         un elemento nascosto cosi' non ha altezza da animare. */
+      details.classList.toggle("expanded");
+
+      const summary = card.querySelector(".cert-card__summary");
+
+      /* contains legge lo stato dopo il toggle e aggiorna il
+         testo dell'invito al click. */
+      if (details.classList.contains("expanded")) {
+        summary.textContent = "Click to hide details";
+      } else {
+        summary.textContent = "Click to see details";
+      }
+    });
+
+    container.appendChild(card);
+  });
+};
+
+/* ============================================================
+   DASHBOARD DELLE COMPETENZE
+   ============================================================ */
+
+/** Crea le categorie, le voci cliccabili e anima le barre. */
+const renderSkills = () => {
+  const container = document.getElementById("skills-container");
+  if (!container) return;
+
+  /* forEach passa anche l'indice: qui serve a scaglionare le
+     animazioni categoria per categoria. */
+  skills.forEach((category, categoryIndex) => {
+    const categoryCard = document.createElement("article");
+    categoryCard.className = `skill-category skill-category--${category.priority} fade-in visible`;
+
+    categoryCard.innerHTML = `
+      <header class="skill-category__header">
+        <span class="skill-category__icon">${category.icon}</span>
+        <div>
+          <p class="skill-category__eyebrow">Technical focus</p>
+          <h3>${category.name}</h3>
+        </div>
+      </header>
+      <div class="skill-category__list"></div>
+    `;
+
+    const list = categoryCard.querySelector(".skill-category__list");
+
+    category.skills.forEach((skill, skillIndex) => {
+      /* button e non div: l'elemento e' cliccabile, quindi deve
+         essere raggiungibile con il tasto Tab e attivabile con
+         Invio. Un div andrebbe reso accessibile a mano. */
+      const skillItem = document.createElement("button");
+
+      /* Dentro un form un button vale submit: type="button" evita
+         invii non voluti se un giorno la dashboard finisse in un form. */
+      skillItem.type = "button";
+      skillItem.className = "skill-item";
+
+      /* aria-expanded comunica agli screen reader se i dettagli
+         sono aperti. Va tenuto allineato allo stato reale. */
+      skillItem.setAttribute("aria-expanded", "false");
+
+      /* La barra e' decorativa: il valore e' gia' scritto in cifre
+         accanto al nome, quindi aria-hidden la esclude dalla
+         lettura per non ripetere la stessa informazione. */
+      skillItem.innerHTML = `
+        <span class="skill-item__topline">
+          <span><strong>${skill.name}</strong><small>${skill.label}</small></span>
+          <b>${skill.percentage}%</b>
+        </span>
+        <span class="skill-item__track" aria-hidden="true"><span class="skill-item__fill"></span></span>
+        <span class="skill-item__details">${skill.details}</span>
+      `;
+
+      const fill = skillItem.querySelector(".skill-item__fill");
+
+      skillItem.addEventListener("click", () => {
+        /* toggle restituisce true se la classe e' stata aggiunta,
+           quindi ci dice subito lo stato nuovo. */
+        const expanded = skillItem.classList.toggle("is-expanded");
+
+        /* setAttribute vuole una stringa: String() converte il
+           booleano in "true" o "false". */
+        skillItem.setAttribute("aria-expanded", String(expanded));
+
+        const details = skillItem.querySelector(".skill-item__details");
+        details.style.maxHeight = expanded ? "3rem" : "0";
+        details.style.paddingTop = expanded ? "0.65rem" : "0";
+        details.style.opacity = expanded ? "1" : "0";
+      });
+
+      list.appendChild(skillItem);
+
+      /* Le barre partono con un ritardo crescente, cosi' si
+         riempiono a cascata invece che tutte insieme.
+         scaleX ridimensiona la barra senza cambiarne la larghezza
+         reale: il browser lo gestisce sulla scheda grafica e
+         l'animazione resta fluida. transformOrigin la fa crescere
+         da sinistra invece che dal centro. */
+      setTimeout(() => {
+        fill.style.width = "100%";
+        fill.style.transform = `scaleX(${skill.percentage / 100})`;
+        fill.style.transformOrigin = "left center";
+      }, (categoryIndex * 100) + (skillIndex * 70));
+    });
+
+    container.appendChild(categoryCard);
+  });
+};
+
+/* ============================================================
+   FORM DI VERIFICA CERTIFICAZIONE
+   ============================================================ */
+
+/** Collega la validazione al form, sia mentre si scrive sia al submit. */
+const initFormValidation = () => {
+  const form = document.getElementById("certVerifyForm");
+  if (!form) return;
+
+  const certNameInput = document.getElementById("certName");
+  const certIdInput = document.getElementById("certId");
+  const certOrgSelect = document.getElementById("certOrg");
+
+  const certNameError = document.getElementById("certNameError");
+  const certIdError = document.getElementById("certIdError");
+  const certOrgError = document.getElementById("certOrgError");
+
+  /**
+   * Controlla che un campo non sia vuoto e aggiorna l'interfaccia.
+   * @param {HTMLElement} input campo da controllare
+   * @param {HTMLElement} errorSpan messaggio di errore collegato
+   * @returns {boolean} true se il campo e' compilato
+   */
+  const validateField = (input, errorSpan) => {
+    const value = input.value.trim();
+
+    if (value === "") {
+      errorSpan.classList.add("visible");
+      input.classList.add("input-error");
+      return false;
+    }
+
+    errorSpan.classList.remove("visible");
+    input.classList.remove("input-error");
+    return true;
+  };
+
+  /**
+   * Controlla la forma dell'ID: un gruppo di lettere o numeri, un
+   * trattino e almeno un altro gruppo. Esempio: COMP001-2024-XXXX.
+   * @param {string} id valore da controllare
+   * @returns {boolean} true se il formato e' corretto
+   */
+  const validateCertIdFormat = (id) => {
+    /* ^ e $ ancorano il pattern a inizio e fine stringa: senza,
+       basterebbe una parte qualsiasi del testo a farlo passare. */
+    const pattern = /^[A-Za-z0-9]+-[A-Za-z0-9-]+$/;
+    return pattern.test(id) && id.length >= 4;
+  };
+
+  /* Validazione a ogni tasto premuto. */
+
+  certNameInput.addEventListener("input", () => {
+    validateField(certNameInput, certNameError);
+  });
+
+  /* L'ID ha due errori possibili, vuoto o mal formattato, quindi
+     non basta validateField: cambiamo anche il testo del messaggio
+     per dire all'utente qual e' il problema. */
+  certIdInput.addEventListener("input", () => {
+    const value = certIdInput.value.trim();
+
+    if (value === "") {
+      certIdError.textContent = "Please enter a valid certification ID";
+      certIdError.classList.add("visible");
+      certIdInput.classList.add("input-error");
+    } else if (!validateCertIdFormat(value)) {
+      certIdError.textContent = "ID format: XXXX-XXXX (use letters, numbers, and hyphens)";
+      certIdError.classList.add("visible");
+      certIdInput.classList.add("input-error");
+    } else {
+      certIdError.classList.remove("visible");
+      certIdInput.classList.remove("input-error");
+    }
+  });
+
+  /* Sulla select l'evento input scatta alla scelta dell'opzione,
+     come change. Lo usiamo per coerenza con gli altri campi. */
+  certOrgSelect.addEventListener("input", () => {
+    validateField(certOrgSelect, certOrgError);
+  });
+
+  /* ---- Controllo finale al submit ---- */
+
+  form.addEventListener("submit", (e) => {
+    /* Blocca l'invio al server e il ricaricamento della pagina. */
+    e.preventDefault();
+
+    let isValid = true;
+
+    if (!validateField(certNameInput, certNameError)) {
+      isValid = false;
+    }
+
+    const certIdValue = certIdInput.value.trim();
+
+    if (certIdValue === "") {
+      certIdError.textContent = "Please enter a valid certification ID";
+      certIdError.classList.add("visible");
+      certIdInput.classList.add("input-error");
+      isValid = false;
+    } else if (!validateCertIdFormat(certIdValue)) {
+      certIdError.textContent = "ID format: XXXX-XXXX (use letters, numbers, and hyphens)";
+      certIdError.classList.add("visible");
+      certIdInput.classList.add("input-error");
+      isValid = false;
+    } else {
+      certIdError.classList.remove("visible");
+      certIdInput.classList.remove("input-error");
+    }
+
+    if (!validateField(certOrgSelect, certOrgError)) {
+      isValid = false;
+    }
+
+    if (isValid) {
+      const formData = {
+        certName: certNameInput.value.trim(),
+        certId: certIdValue,
+        certOrg: certOrgSelect.value
+      };
+
+      /* Invio simulato: i dati finiscono nella console del browser.
+         Con un backend vero partirebbe una fetch verso il servizio
+         di verifica dell'ente emittente. */
+      console.log("Verification request submitted:", formData);
+
+      showToast("Verification request submitted", "success");
+
+      form.reset();
+
+      /* reset svuota i campi ma lascia le classi aggiunte da noi:
+         senza questo ciclo i bordi rossi resterebbero su campi
+         ormai vuoti. */
+      [certNameInput, certIdInput, certOrgSelect].forEach((input) => {
+        input.classList.remove("input-error");
+      });
+    } else {
+      showToast("Please fix the errors in the form before submitting", "error");
+    }
+  });
+};
+
+/* ============================================================
+   AVVIO
+   ============================================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderNavbar("certifications");
+  renderCertifications();
+  renderSkills();
+  initFormValidation();
+
+  /* Va chiamata dopo il rendering: IntersectionObserver puo'
+     osservare solo elementi gia' presenti nel DOM. */
+  initScrollAnimations();
+});
+
+/* ===== js/contact.js ===== */
+
+/* ============================================================
+   contact.js
+   Form di contatto con validazione mentre si scrive, contatore
+   di caratteri e invio simulato.
+
+   Nessun dato parte davvero: senza backend il "submit" stampa
+   l'oggetto in console e mostra una conferma a schermo.
+   ============================================================ */
+
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderNavbar("contact");
+
+  /* Tutti i riferimenti stanno dentro il callback perche' prima di
+     DOMContentLoaded questi elementi non esistono ancora. */
+  const form = document.getElementById("contactForm");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const subjectInput = document.getElementById("subject");
+  const messageInput = document.getElementById("message");
+
+  const nameError = document.getElementById("nameError");
+  const emailError = document.getElementById("emailError");
+  const subjectError = document.getElementById("subjectError");
+  const messageError = document.getElementById("messageError");
+
+  const charCounter = document.getElementById("charCounter");
+
+  /* Deve restare uguale al maxlength della textarea nell'HTML.
+     Come costante si cambia in un punto solo. */
+  const MAX_CHARS = 500;
+
+  /* Regex per l'email, dichiarata una volta e riusata nei due
+     punti che la servono.
+     Significato: almeno un carattere che non sia spazio o chiocciola,
+     poi @, poi altri caratteri, poi un punto e infine il dominio.
+     E' un controllo di forma, non di esistenza: solo l'invio di una
+     mail di verifica puo' dire se un indirizzo esiste davvero. */
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  /* ============================================================
+     CONTATORE DI CARATTERI
+     ============================================================ */
+
+  messageInput.addEventListener("input", () => {
+    const currentLength = messageInput.value.length;
+
+    charCounter.textContent = `${currentLength}/${MAX_CHARS} characters`;
+
+    /* Sopra il 90% del limite il contatore diventa arancione, cosi'
+       l'utente se ne accorge prima di trovarsi bloccato. */
+    if (currentLength >= MAX_CHARS * 0.9) {
+      charCounter.classList.add("char-counter--warning");
+    } else {
+      charCounter.classList.remove("char-counter--warning");
+    }
+  });
+
+  /* ============================================================
+     VALIDAZIONE
+
+     Una sola funzione per tutti i campi: riceve gia' il risultato
+     del controllo e si occupa solo di mostrarlo. La regola resta
+     nel punto in cui viene chiamata, che cambia da campo a campo.
+     ============================================================ */
+
+  /**
+   * Applica lo stato visivo di un campo.
+   * @param {HTMLElement} fieldElement input o textarea da marcare
+   * @param {boolean} isValid esito del controllo
+   * @param {HTMLElement} errorElement span con il messaggio di errore
+   * @returns {boolean} lo stesso isValid, per usarlo nelle condizioni
+   */
+  const validateField = (fieldElement, isValid, errorElement) => {
+    if (isValid) {
+      fieldElement.classList.remove("input-error");
+      fieldElement.classList.add("input-success");
+      errorElement.classList.remove("visible");
+    } else {
+      fieldElement.classList.add("input-error");
+      fieldElement.classList.remove("input-success");
+      errorElement.classList.add("visible");
+    }
+
+    return isValid;
+  };
+
+  /* Validazione a ogni tasto: l'errore sparisce appena il campo
+     diventa corretto, senza aspettare l'invio. */
+
+  nameInput.addEventListener("input", () => {
+    const value = nameInput.value.trim();
+    validateField(nameInput, value.length >= 2, nameError);
+  });
+
+  emailInput.addEventListener("input", () => {
+    const value = emailInput.value.trim();
+    /* test() restituisce true se la stringa rispetta il pattern. */
+    validateField(emailInput, emailRegex.test(value), emailError);
+  });
+
+  subjectInput.addEventListener("input", () => {
+    const value = subjectInput.value.trim();
+    validateField(subjectInput, value.length > 0, subjectError);
+  });
+
+  messageInput.addEventListener("input", () => {
+    const value = messageInput.value.trim();
+    validateField(messageInput, value.length >= 10, messageError);
+  });
+
+  /* ============================================================
+     EVIDENZIAZIONE DEL CAMPO ATTIVO
+
+     focus scatta quando si entra nel campo, blur quando lo si
+     lascia. Nessuno dei due fa bubbling verso i genitori, quindi
+     il listener va messo sui campi e non sul form.
+     ============================================================ */
+
+  /* querySelectorAll restituisce una NodeList: si scorre con
+     forEach ma non ha i metodi degli array come map o filter. */
+  const allFields = form.querySelectorAll("input, textarea");
+
+  allFields.forEach((field) => {
+    field.addEventListener("focus", () => {
+      field.classList.add("input-focused");
+    });
+
+    field.addEventListener("blur", () => {
+      field.classList.remove("input-focused");
+    });
+  });
+
+  /* ============================================================
+     INVIO DEL FORM
+     ============================================================ */
+
+  form.addEventListener("submit", (e) => {
+    /* Il form ha l'attributo novalidate nell'HTML: disattiva i
+       messaggi automatici del browser, che cambiano aspetto da un
+       browser all'altro, e lascia il controllo a questo codice.
+       preventDefault blocca il ricaricamento della pagina. */
+    e.preventDefault();
+
+    const nameValue = nameInput.value.trim();
+    const emailValue = emailInput.value.trim();
+    const subjectValue = subjectInput.value.trim();
+    const messageValue = messageInput.value.trim();
+
+    let isFormValid = true;
+
+    /* Controlliamo tutti i campi senza fermarci al primo errore,
+       cosi' l'utente li vede segnalati tutti insieme. Le chiamate
+       sono separate proprio per questo: dentro un'unica condizione
+       con && le successive non verrebbero eseguite. */
+    if (!validateField(nameInput, nameValue.length >= 2, nameError)) {
+      isFormValid = false;
+    }
+
+    if (!validateField(emailInput, emailRegex.test(emailValue), emailError)) {
+      isFormValid = false;
+    }
+
+    if (!validateField(subjectInput, subjectValue.length > 0, subjectError)) {
+      isFormValid = false;
+    }
+
+    if (!validateField(messageInput, messageValue.length >= 10, messageError)) {
+      isFormValid = false;
+    }
+
+    if (isFormValid) {
+      /* Oggetto con i dati raccolti. Con un backend vero questo
+         sarebbe il corpo di una fetch in POST. */
+      const formData = {
+        name: nameValue,
+        email: emailValue,
+        subject: subjectValue,
+        message: messageValue,
+        timestamp: new Date().toISOString()
+      };
+
+      /* Invio simulato: i dati compaiono nella console del browser,
+         raggiungibile con F12. */
+      console.log("Form data submitted:", formData);
+
+      showToast("Message sent successfully", "success");
+
+      /* reset() riporta il form ai valori iniziali, ma non tocca le
+         classi aggiunte da noi: vanno tolte a mano, altrimenti i
+         bordi verdi resterebbero su campi ormai vuoti. */
+      form.reset();
+
+      allFields.forEach((field) => {
+        field.classList.remove("input-success", "input-error");
+      });
+
+      charCounter.textContent = `0/${MAX_CHARS} characters`;
+      charCounter.classList.remove("char-counter--warning");
+
+      /* Se l'utente invia due volte di seguito, il messaggio
+         precedente potrebbe essere ancora a schermo: lo togliamo
+         per non ritrovarsi conferme accumulate. */
+      const existingSuccess = form.parentElement.querySelector(".success-message");
+
+      if (existingSuccess) {
+        existingSuccess.remove();
+      }
+
+      /* Conferma costruita a runtime e inserita dopo il form. */
+      const successDiv = document.createElement("div");
+      successDiv.classList.add("success-message");
+
+      successDiv.innerHTML = `
+        <span class="success-message__icon">&#10004;</span>
+        <p class="success-message__text">Thank you, ${nameValue}! Your message has been sent successfully. I'll get back to you soon.</p>
+      `;
+
+      form.parentElement.appendChild(successDiv);
+
+      /* Il messaggio si toglie da solo dopo cinque secondi. Il
+         controllo su parentNode evita l'errore se nel frattempo
+         fosse gia' stato rimosso da un secondo invio. */
+      setTimeout(() => {
+        if (successDiv.parentNode) {
+          successDiv.parentNode.removeChild(successDiv);
+        }
+      }, 5000);
+    } else {
+      showToast("Please fix the errors in the form", "error");
+    }
+  });
+});
+
+/* ===== js/login.js ===== */
+
+/* ============================================================
+   login.js
+   Gestisce il form di accesso: validazione dei campi, invio
+   simulato e feedback all'utente.
+
+   Il login e' finto e serve a mostrare come cambia l'interfaccia
+   tra utente autenticato e visitatore. Le credenziali sono in
+   chiaro dentro app.js, quindi la sicurezza vera qui non esiste:
+   in un'applicazione reale il controllo starebbe sul server.
+   ============================================================ */
+
+"use strict";
+
+/* ------------------------------------------------------------
+   RIFERIMENTI AL DOM
+
+   Li prendiamo una volta sola all'avvio invece di richiamare
+   getElementById dentro ogni funzione: ogni chiamata rifa' la
+   ricerca nel documento, e qui gli elementi non cambiano mai.
+
+   Sono const perche' cambiera' il contenuto degli input, non il
+   riferimento all'elemento. Riassegnare loginForm sarebbe un
+   errore, e const lo blocca subito invece di lasciarlo passare.
+   ------------------------------------------------------------ */
+
+const loginForm = document.getElementById("loginForm");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+const usernameError = document.getElementById("usernameError");
+const passwordError = document.getElementById("passwordError");
+const submitBtn = document.getElementById("submitBtn");
+
+/* Se c'e' gia' una sessione attiva non ha senso mostrare il form:
+   mandiamo l'utente alla home. Il controllo sta fuori da qualsiasi
+   funzione, quindi parte appena il file viene eseguito. */
+if (Auth.isLoggedIn()) {
+  window.location.href = "index.html";
+}
+
+/* ============================================================
+   FUNZIONI DI SUPPORTO PER LA VALIDAZIONE
+
+   I messaggi di errore esistono gia' nell'HTML ma sono nascosti
+   dal CSS. Il JavaScript non li crea: si limita ad aggiungere o
+   togliere la classe .visible. Cosi' la logica resta qui e
+   l'aspetto resta nel foglio di stile.
+   ============================================================ */
+
+/**
+ * Segnala un campo non valido e mostra il messaggio di errore.
+ * @param {HTMLInputElement} input campo da evidenziare
+ * @param {HTMLElement} errorSpan span che contiene il messaggio
+ * @param {string} message testo dell'errore
+ */
+function showFieldError(input, errorSpan, message) {
+  /* textContent inserisce testo puro. Con innerHTML il contenuto
+     verrebbe interpretato come HTML, che e' la porta d'ingresso
+     degli attacchi XSS quando il testo arriva dall'utente. */
+  errorSpan.textContent = message;
+  errorSpan.classList.add("visible");
+
+  /* Le due classi si escludono: togliamo quella di successo
+     altrimenti il bordo resterebbe verde su un campo sbagliato. */
+  input.classList.add("input-error");
+  input.classList.remove("input-success");
+}
+
+/**
+ * Nasconde l'errore di un campo senza segnalarlo come valido.
+ * Serve mentre l'utente sta ancora scrivendo.
+ * @param {HTMLInputElement} input
+ * @param {HTMLElement} errorSpan
+ */
+function clearFieldError(input, errorSpan) {
+  errorSpan.classList.remove("visible");
+  input.classList.remove("input-error");
+}
+
+/**
+ * Segnala un campo come valido con il bordo verde.
+ * @param {HTMLInputElement} input
+ * @param {HTMLElement} errorSpan
+ */
+function markFieldSuccess(input, errorSpan) {
+  errorSpan.classList.remove("visible");
+  input.classList.remove("input-error");
+  input.classList.add("input-success");
+}
+
+/**
+ * Controlla tutti i campi del form.
+ *
+ * Non usciamo al primo errore: continuiamo fino in fondo cosi'
+ * l'utente vede subito tutti i problemi invece di scoprirli uno
+ * alla volta a ogni tentativo.
+ *
+ * @returns {boolean} true se ogni campo e' valido
+ */
+function validateForm() {
+  /* let e non const: il valore passa a false appena troviamo un
+     campo sbagliato. */
+  let isValid = true;
+
+  /* trim() toglie gli spazi a inizio e fine stringa, altrimenti
+     un campo con soli spazi passerebbe il controllo sul vuoto. */
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  if (username === "") {
+    showFieldError(usernameInput, usernameError, "Username is required");
+    isValid = false;
+  } else if (username.length < 3) {
+    showFieldError(usernameInput, usernameError, "Username must be at least 3 characters");
+    isValid = false;
+  } else {
+    markFieldSuccess(usernameInput, usernameError);
+  }
+
+  if (password === "") {
+    showFieldError(passwordInput, passwordError, "Password is required");
+    isValid = false;
+  } else if (password.length < 6) {
+    showFieldError(passwordInput, passwordError, "Password must be at least 6 characters");
+    isValid = false;
+  } else {
+    markFieldSuccess(passwordInput, passwordError);
+  }
+
+  return isValid;
+}
+
+/**
+ * Attiva o disattiva lo stato di caricamento sul bottone.
+ * disabled impedisce click ripetuti mentre l'operazione e' in
+ * corso, che su un form vero significherebbe invii doppi.
+ * @param {boolean} loading
+ */
+function setLoadingState(loading) {
+  if (loading) {
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Signing in...";
+  } else {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Sign In";
+  }
+}
+
+/* ============================================================
+   INVIO DEL FORM
+   ============================================================ */
+
+loginForm.addEventListener("submit", function (event) {
+  /* Senza preventDefault il browser invierebbe il form come
+     richiesta HTTP e ricaricherebbe la pagina, buttando via lo
+     stato appena calcolato. Lo blocchiamo e gestiamo tutto qui. */
+  event.preventDefault();
+
+  /* Se la validazione fallisce usciamo subito: i messaggi di
+     errore li ha gia' mostrati validateForm. */
+  if (!validateForm()) {
+    return;
+  }
+
+  setLoadingState(true);
+
+  const username = usernameInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  /* Auth.login sta in app.js e restituisce l'utente o null.
+     Qui e' immediato perche' i dati sono in memoria; con un server
+     vero sarebbe una fetch e servirebbe async/await. */
+  const user = Auth.login(username, password);
+
+  if (user) {
+    showToast("Login successful. Welcome back, " + user.username, "success");
+
+    /* Aspettiamo un secondo prima del redirect, altrimenti il
+       toast sparirebbe insieme alla pagina senza essere letto. */
+    setTimeout(function () {
+      window.location.href = "profile.html";
+    }, 1000);
+  } else {
+    /* Credenziali sbagliate: riabilitiamo il bottone per lasciare
+       ritentare. Il messaggio non dice quale dei due campi e'
+       errato, cosi' non aiuta chi prova a indovinare gli utenti. */
+    setLoadingState(false);
+    showToast("Invalid username or password. Please try again.", "error");
+
+    /* La classe .shake avvia l'animazione definita nel CSS.
+       Va rimossa dopo i 500ms della durata: un'animazione CSS
+       riparte solo quando la classe viene tolta e rimessa, quindi
+       senza questa riga il secondo tentativo sbagliato non
+       produrrebbe alcun effetto visivo. */
+    loginForm.classList.add("shake");
+
+    setTimeout(function () {
+      loginForm.classList.remove("shake");
+    }, 500);
+  }
+});
+
+/* ============================================================
+   VALIDAZIONE MENTRE SI SCRIVE
+
+   L'evento input scatta a ogni modifica del campo, compresi
+   incolla e cancellazione. A differenza di change, che aspetta
+   l'uscita dal campo, permette di correggere l'errore subito.
+
+   Mentre l'utente scrive segnaliamo solo il successo: mostrare
+   "troppo corto" dopo la prima lettera sarebbe solo fastidioso.
+   Gli errori veri restano al submit.
+   ============================================================ */
+
+usernameInput.addEventListener("input", function () {
+  const value = usernameInput.value.trim();
+
+  if (value.length >= 3) {
+    markFieldSuccess(usernameInput, usernameError);
+  } else {
+    clearFieldError(usernameInput, usernameError);
+  }
+});
+
+passwordInput.addEventListener("input", function () {
+  const value = passwordInput.value.trim();
+
+  if (value.length >= 6) {
+    markFieldSuccess(passwordInput, passwordError);
+  } else {
+    clearFieldError(passwordInput, passwordError);
+  }
+});
+
+/* ===== js/profile.js ===== */
+
+/* ============================================================
+   profile.js
+   Pagina profilo, visibile solo a chi ha effettuato l'accesso.
+   Mostra i dati dell'utente, permette di modificarli e gestisce
+   il logout.
+
+   E' la pagina che dimostra i due stati dell'interfaccia: da
+   loggati si vede il profilo, da visitatori un invito ad
+   accedere. La protezione e' solo lato client e serve a
+   mostrare il meccanismo: chi apre il file sorgente vede tutto
+   comunque. In un'applicazione vera il controllo starebbe sul
+   server, che senza sessione valida non invierebbe i dati.
+   ============================================================ */
+
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderNavbar("profile");
+
+  /* I due blocchi esistono entrambi nell'HTML. Non ne creiamo uno
+     al volo: mostriamo quello giusto togliendo la classe hidden. */
+  const authContent = document.getElementById("auth-content");
+  const guestContent = document.getElementById("guest-content");
+
+  if (Auth.isLoggedIn()) {
+    authContent.classList.remove("hidden");
+    guestContent.classList.add("hidden");
+
+    /* getUser legge da localStorage e restituisce
+       { username, name, email, role }. */
+    const user = Auth.getUser();
+
+    /* Caso limite: il flag di login c'e' ma i dati mancano, ad
+       esempio se qualcuno ha cancellato solo una delle due chiavi.
+       Meglio fermarsi che proseguire con user uguale a null. */
+    if (!user) {
+      showToast("Errore nel caricamento del profilo", "error");
+      return;
+    }
+
+    /* L'ordine conta: setupEditButton cerca un bottone che
+       renderProfileDetails ha appena creato. Invertendo le due
+       chiamate non troverebbe nulla. */
+    renderProfileHeader(user);
+    renderProfileDetails(user);
+    setupEditButton();
+    setupEditForm(user);
+    setupLogoutButton();
+  } else {
+    authContent.classList.add("hidden");
+    guestContent.classList.remove("hidden");
+  }
+});
+
+/* ============================================================
+   INTESTAZIONE DEL PROFILO
+   ============================================================ */
+
+/**
+ * Costruisce l'intestazione con foto, nome, email e ruolo.
+ * Gli id displayName, displayEmail e displayRole servono al form
+ * di modifica per aggiornare i valori a schermo dopo il salvataggio.
+ * @param {object} user dati dell'utente loggato
+ */
+const renderProfileHeader = (user) => {
+  const headerContainer = document.getElementById("profile-header");
+
+  const profileImage = "assets/profile.png";
+
+  headerContainer.innerHTML = `
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <img src="${profileImage}" alt="${user.name} profile photo" />
+      </div>
+      <div class="profile-info">
+        <h2 id="displayName">${user.name}</h2>
+        <p id="displayEmail">${user.email}</p>
+        <p id="displayRole" class="text-accent">${user.role}</p>
+        <span class="profile-badge">&#10003; Verified</span>
+      </div>
+    </div>
+  `;
+};
+
+/* ============================================================
+   CARD DEL PROFILO
+
+   Qui usiamo createElement invece di innerHTML. E' piu' lungo da
+   scrivere ma inserisce i testi con textContent, che non
+   interpreta l'HTML: se un utente salvasse un tag dentro il
+   proprio nome, comparirebbe come testo invece di essere eseguito.
+   ============================================================ */
+
+/**
+ * Crea la griglia con le tre card informative.
+ * @param {object} user dati dell'utente loggato
+ */
+const renderProfileDetails = (user) => {
+  const detailsContainer = document.getElementById("profile-details");
+
+  const grid = document.createElement("div");
+  grid.className = "grid grid--3 mt-3";
+
+  /* Ogni card e' costruita da una funzione dedicata: tenerle
+     separate rende chiaro cosa contiene ciascuna senza dover
+     leggere un blocco unico lungo cento righe. */
+  grid.appendChild(createAboutCard(user));
+  grid.appendChild(createActivityCard());
+  grid.appendChild(createSettingsCard());
+
+  /* Un solo appendChild alla fine: la griglia e' stata composta in
+     memoria, quindi il browser ridisegna la pagina una volta sola
+     invece che a ogni card aggiunta. */
+  detailsContainer.appendChild(grid);
+};
+
+/**
+ * Card "About": biografia e tag delle competenze.
+ * @param {object} user dati dell'utente loggato
+ * @returns {HTMLElement} la card pronta da inserire
+ */
+const createAboutCard = (user) => {
+  const card = document.createElement("div");
+  card.className = "card fade-in visible";
+
+  const title = document.createElement("h3");
+  title.textContent = "About";
+  card.appendChild(title);
+
+  const bio = document.createElement("p");
+  bio.className = "mt-2";
+
+  /* Il testo si adatta ai dati dell'utente. E' spezzato su piu'
+     righe con la concatenazione per non superare la larghezza
+     leggibile del file. */
+  bio.textContent = `Ciao! Sono ${user.name}, appassionato di tecnologia e sviluppo software. ` +
+    `Attualmente lavoro come ${user.role}, con focus su architetture cloud, ` +
+    `backend scalabili e best practices di sviluppo.`;
+  card.appendChild(bio);
+
+  const tagsContainer = document.createElement("div");
+  tagsContainer.className = "card__tags mt-2";
+
+  const skills = ["Cloud Computing", "Backend", "DevOps", "Python"];
+
+  skills.forEach((skill) => {
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = skill;
+    tagsContainer.appendChild(tag);
+  });
+
+  card.appendChild(tagsContainer);
+
+  return card;
+};
+
+/**
+ * Card "Activity": elenco delle attivita' recenti.
+ * I dati sono fissi perche' non c'e' un backend che li registri.
+ * @returns {HTMLElement} la card pronta da inserire
+ */
+const createActivityCard = () => {
+  const card = document.createElement("div");
+  card.className = "card fade-in visible";
+
+  const title = document.createElement("h3");
+  title.textContent = "Activity";
+  card.appendChild(title);
+
+  const activities = [
+    { text: "Aggiornato il progetto Portfolio", time: "2 ore fa" },
+    { text: "Completata certificazione AWS", time: "3 giorni fa" },
+    { text: "Nuovo commit su GitHub", time: "1 settimana fa" },
+    { text: "Pubblicato articolo su DevOps", time: "2 settimane fa" }
+  ];
+
+  /* ul e li perche' e' una lista vera: gli screen reader
+     annunciano il numero di voci, cosa che con dei div non
+     succederebbe. Lo stile e' tutto nelle classi CSS. */
+  const list = document.createElement("ul");
+  list.className = "profile-activity mt-2";
+
+  activities.forEach((activity) => {
+    const li = document.createElement("li");
+    li.className = "profile-activity__item";
+
+    const actText = document.createElement("span");
+    actText.className = "profile-activity__text";
+    actText.textContent = activity.text;
+
+    const actTime = document.createElement("span");
+    actTime.className = "profile-activity__time";
+    actTime.textContent = activity.time;
+
+    li.appendChild(actText);
+    li.appendChild(actTime);
+
+    list.appendChild(li);
+  });
+
+  card.appendChild(list);
+
+  return card;
+};
+
+/**
+ * Card "Settings": bottoni per modificare il profilo e uscire.
+ * I listener non sono collegati qui ma in setupEditButton e
+ * setupLogoutButton, chiamate dopo che la card e' nel DOM.
+ * @returns {HTMLElement} la card pronta da inserire
+ */
+const createSettingsCard = () => {
+  const card = document.createElement("div");
+  card.className = "card fade-in visible";
+
+  const title = document.createElement("h3");
+  title.textContent = "Settings";
+  card.appendChild(title);
+
+  const desc = document.createElement("p");
+  desc.className = "mt-2";
+  desc.textContent = "Gestisci il tuo account e le preferenze del profilo.";
+  card.appendChild(desc);
+
+  const btnContainer = document.createElement("div");
+  btnContainer.className = "profile-actions mt-2";
+
+  const editBtn = document.createElement("button");
+  editBtn.className = "btn btn--outline btn--small";
+  editBtn.id = "editProfileBtn";
+  editBtn.textContent = "Modifica Profilo";
+  btnContainer.appendChild(editBtn);
+
+  const logoutBtn = document.createElement("button");
+  logoutBtn.className = "btn btn--danger btn--small";
+  logoutBtn.id = "logoutBtn";
+  logoutBtn.textContent = "Logout";
+  btnContainer.appendChild(logoutBtn);
+
+  card.appendChild(btnContainer);
+
+  return card;
+};
+
+/* ============================================================
+   APERTURA DELL'EDITOR
+   ============================================================ */
+
+/** Collega il bottone che mostra e nasconde il form di modifica. */
+const setupEditButton = () => {
+  const editBtn = document.getElementById("editProfileBtn");
+
+  if (editBtn) {
+    editBtn.addEventListener("click", () => {
+      const editSection = document.getElementById("edit-section");
+
+      editSection.classList.toggle("hidden");
+
+      /* Il testo del bottone segue lo stato della sezione, cosi'
+         l'utente sa sempre cosa succede al prossimo click. */
+      if (editSection.classList.contains("hidden")) {
+        editBtn.textContent = "Modifica Profilo";
+      } else {
+        editBtn.textContent = "Chiudi Editor";
+      }
+    });
+  }
+};
+
+/* ============================================================
+   FORM DI MODIFICA
+   ============================================================ */
+
+/**
+ * Precompila il form, valida i campi e salva le modifiche.
+ * @param {object} user dati attuali dell'utente
+ */
+const setupEditForm = (user) => {
+  const form = document.getElementById("editProfileForm");
+
+  const nameInput = document.getElementById("editName");
+  const emailInput = document.getElementById("editEmail");
+  const roleInput = document.getElementById("editRole");
+
+  /* Campi precompilati: modificare un dato e' piu' comodo che
+     riscriverlo da zero. */
+  nameInput.value = user.name;
+  emailInput.value = user.email;
+  roleInput.value = user.role;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const newName = nameInput.value.trim();
+    const newEmail = emailInput.value.trim();
+    const newRole = roleInput.value.trim();
+
+    /* Puliamo gli errori del tentativo precedente, altrimenti
+       resterebbero segnati campi ormai corretti. */
+    clearFormErrors();
+
+    let isValid = true;
+
+    if (newName.length === 0) {
+      showFieldError("editName", "nameError");
+      isValid = false;
+    }
+
+    /* Controllo di forma sull'email: c'e' del testo, una chiocciola,
+       altro testo, un punto e un dominio. */
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(newEmail)) {
+      showFieldError("editEmail", "emailError");
+      isValid = false;
+    }
+
+    if (newRole.length === 0) {
+      showFieldError("editRole", "roleError");
+      isValid = false;
+    }
+
+    /* Uscita anticipata: senza return il codice sotto salverebbe
+       comunque i dati sbagliati. */
+    if (!isValid) {
+      showToast("Correggi gli errori nel form", "error");
+      return;
+    }
+
+    /* Aggiornamento immediato di quello che si vede a schermo. */
+    const displayName = document.getElementById("displayName");
+    const displayEmail = document.getElementById("displayEmail");
+    const displayRole = document.getElementById("displayRole");
+
+    displayName.textContent = newName;
+    displayEmail.textContent = newEmail;
+    displayRole.textContent = newRole;
+
+    /* Salvataggio nel localStorage tramite Auth.updateUser, definita
+       in app.js. Senza questa riga la modifica resterebbe solo
+       visiva e sparirebbe al primo reload della pagina. */
+    Auth.updateUser({ name: newName, email: newEmail, role: newRole });
+
+    /* Chiudiamo l'editor e riportiamo il bottone allo stato
+       iniziale: il lavoro e' finito. */
+    const editSection = document.getElementById("edit-section");
+    editSection.classList.add("hidden");
+
+    const editBtn = document.getElementById("editProfileBtn");
+
+    if (editBtn) {
+      editBtn.textContent = "Modifica Profilo";
+    }
+
+    showToast("Profilo aggiornato con successo", "success");
+  });
+
+  /* Bottone Annulla: chiude senza salvare. */
+  const cancelBtn = document.getElementById("cancelEditBtn");
+
+  if (cancelBtn) {
+    cancelBtn.addEventListener("click", () => {
+      /* Rimettiamo nei campi i valori mostrati a schermo, che sono
+         quelli salvati: cosi' le modifiche scritte ma non
+         confermate vengono buttate via. */
+      nameInput.value = document.getElementById("displayName").textContent;
+      emailInput.value = document.getElementById("displayEmail").textContent;
+      roleInput.value = document.getElementById("displayRole").textContent;
+
+      const editSection = document.getElementById("edit-section");
+      editSection.classList.add("hidden");
+
+      const editBtn = document.getElementById("editProfileBtn");
+
+      if (editBtn) {
+        editBtn.textContent = "Modifica Profilo";
+      }
+
+      clearFormErrors();
+    });
+  }
+};
+
+/* ============================================================
+   SUPPORTO ALLA VALIDAZIONE
+   ============================================================ */
+
+/**
+ * Segnala un campo come non valido.
+ * Riceve gli id invece degli elementi perche' i messaggi sono
+ * gia' scritti nell'HTML: qui basta renderli visibili.
+ * @param {string} inputId id del campo
+ * @param {string} errorId id dello span con il messaggio
+ */
+const showFieldError = (inputId, errorId) => {
+  const input = document.getElementById(inputId);
+  const error = document.getElementById(errorId);
+
+  input.classList.add("input-error");
+  error.classList.add("visible");
+};
+
+/**
+ * Toglie tutti gli errori dal form di modifica.
+ * Il selettore parte da #editProfileForm per non toccare per
+ * sbaglio i campi di altri form presenti nella pagina.
+ */
+const clearFormErrors = () => {
+  const errorInputs = document.querySelectorAll("#editProfileForm .input-error");
+
+  errorInputs.forEach((input) => {
+    input.classList.remove("input-error");
+  });
+
+  const errorMessages = document.querySelectorAll("#editProfileForm .form-error");
+
+  errorMessages.forEach((msg) => {
+    msg.classList.remove("visible");
+  });
+};
+
+/* ============================================================
+   LOGOUT
+   ============================================================ */
+
+/** Collega il bottone di uscita nella card Settings. */
+const setupLogoutButton = () => {
+  const logoutBtn = document.getElementById("logoutBtn");
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+      /* Cancella le chiavi dal localStorage: al prossimo controllo
+         isLoggedIn restituira' false. */
+      Auth.logout();
+
+      showToast("Logout effettuato con successo", "success");
+
+      /* Un secondo di attesa per far leggere il messaggio prima del
+         cambio pagina. Dalla pagina profilo si esce verso il login,
+         perche' senza sessione qui non ci sarebbe piu' nulla da
+         mostrare. */
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1000);
+    });
+  }
+};
+
+/* ===== js/projects.js ===== */
+
+/* ============================================================
+   projects.js
+   Pagina progetti: scarica i repository dalla GitHub API, crea le
+   card e le filtra in tempo reale per testo e linguaggio.
+
+   Tutto il file sta dentro un unico callback di DOMContentLoaded.
+   Le variabili restano cosi' chiuse in quella funzione invece di
+   finire nell'oggetto window, dove potrebbero entrare in conflitto
+   con quelle di un altro script.
+   ============================================================ */
+
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderNavbar("projects");
+  renderFooter();
+
+  const projectsContainer = document.getElementById("projects-container");
+  const searchInput = document.getElementById("searchInput");
+  const filterLanguage = document.getElementById("filterLanguage");
+  const loadingSpinner = document.getElementById("loading-spinner");
+
+  /* Copia completa dei progetti scaricati. La teniamo da parte per
+     filtrare in memoria: rifare una fetch a ogni tasto premuto
+     sarebbe lentissimo e brucerebbe subito il limite di richieste
+     della GitHub API. */
+  let allProjects = [];
+
+  /* ============================================================
+     DATI DI RISERVA
+
+     Usati quando la GitHub API non risponde, cosi' la pagina
+     mostra comunque qualcosa invece di restare vuota.
+     ============================================================ */
+
+  const fallbackProjects = [
+    {
+      name: "BodyPoseRec",
+      description: "Computer Vision project for real-time body pose recognition using MediaPipe and OpenCV",
+      language: "Python",
+      html_url: "https://github.com/AliouneDiagne/BodyPoseRec",
+      topics: ["computer-vision", "machine-learning", "python"],
+      image: "assets/BodyPoseRec.png"
+    },
+    {
+      name: "ridfix-backend",
+      description: "RESTful API backend for the RidFix platform with authentication and database management",
+      language: "Java",
+      html_url: "https://github.com/AliouneDiagne/ridfix-backend",
+      topics: ["backend", "rest-api", "java", "database"],
+      image: "assets/ridfix-backend.png"
+    },
+    {
+      name: "LuxCommand",
+      description: "OOP project implementing design patterns (Singleton, Factory, Observer, Strategy) and SOLID principles",
+      language: "Java",
+      html_url: "https://github.com/AliouneDiagne/LuxCommand",
+      topics: ["oop", "design-patterns", "java", "solid"],
+      image: "assets/LuxCommand.jpg"
+    },
+    {
+      name: "ridfix-ecommerce",
+      description: "Full-stack e-commerce application with product catalog, cart, and checkout flow",
+      language: "JavaScript",
+      html_url: "https://github.com/AliouneDiagne/ridfix-ecommerce",
+      topics: ["react", "ecommerce", "frontend"],
+      image: "assets/ridfix-ecommerce.png"
+    },
+    {
+      name: "ProgammingPrincipleExam",
+      description: "Programming fundamentals exam project covering data structures and algorithms",
+      language: "Java",
+      html_url: "https://github.com/AliouneDiagne/ProgammingPrincipleExam",
+      topics: ["algorithms", "data-structures", "java"],
+      image: "assets/ProgammingPrincipleExam.png"
+    },
+    {
+      name: "Alioune-s-Portfolio",
+      description: "Personal portfolio website showcasing projects and certifications",
+      language: "HTML",
+      html_url: "https://github.com/AliouneDiagne/Alioune-s-Portfolio",
+      topics: ["portfolio", "html", "css"],
+      image: "assets/profile.png"
+    }
+  ];
+
+  /* Anteprime locali associate al nome del repository. La GitHub
+     API non le fornisce, quindi le colleghiamo qui: aggiungere un
+     progetto significa aggiungere una riga, senza toccare la
+     logica di caricamento. */
+  const projectImages = {
+    BodyPoseRec: "assets/BodyPoseRec.png",
+    "ridfix-backend": "assets/ridfix-backend.png",
+    LuxCommand: "assets/LuxCommand.jpg",
+    "ridfix-ecommerce": "assets/ridfix-ecommerce.png",
+    ProgammingPrincipleExam: "assets/ProgammingPrincipleExam.png"
+  };
+
+  /* ============================================================
+     CARICAMENTO DEI DATI
+     ============================================================ */
+
+  /**
+   * Scarica i repository e prepara l'array usato dai filtri.
+   * La funzione e' async, quindi restituisce sempre una Promise e
+   * al suo interno possiamo usare await per aspettare la risposta.
+   */
+  const loadProjects = async () => {
+    loadingSpinner.style.display = "flex";
+
+    try {
+      const response = await fetch("https://api.github.com/users/AliouneDiagne/repos");
+
+      /* response.ok e' true solo per gli status 200-299. Va
+         controllato a mano: fetch fallisce solo se la richiesta non
+         parte, mentre un 404 arriva come risposta regolare. */
+      if (!response.ok) {
+        throw new Error(`GitHub API error: ${response.status}`);
+      }
+
+      const repos = await response.json();
+
+      /* map costruisce un nuovo array tenendo solo i campi che
+         servono alle card. La risposta di GitHub ha decine di
+         proprieta' per repository e portarsele dietro tutte
+         renderebbe il resto del codice piu' difficile da seguire. */
+      allProjects = repos.map((repo) => ({
+        name: repo.name,
+        /* L'operatore || sostituisce i valori mancanti: su GitHub
+           description e language possono essere null. */
+        description: repo.description || "No description available",
+        language: repo.language || "Unknown",
+        html_url: repo.html_url,
+        topics: repo.topics || [],
+        image: projectImages[repo.name] || "assets/profile.png"
+      }));
+    } catch (error) {
+      /* console.warn e non console.error: il fallback e' previsto,
+         non e' un guasto dell'applicazione. */
+      console.warn("Failed to fetch from GitHub API, using fallback data:", error.message);
+      allProjects = fallbackProjects;
+    } finally {
+      /* finally viene eseguito sia dopo il try sia dopo il catch.
+         Spegnere lo spinner e disegnare le card serve in entrambi
+         i casi, quindi va scritto una volta sola qui. */
+      loadingSpinner.style.display = "none";
+      renderProjects(allProjects);
+    }
+  };
+
+  /* ============================================================
+     DISEGNO DELLE CARD
+     ============================================================ */
+
+  /**
+   * Svuota il contenitore e ridisegna le card ricevute.
+   * @param {Array} projects progetti da mostrare
+   */
+  const renderProjects = (projects) => {
+    /* Svuotiamo prima di ridisegnare, altrimenti a ogni filtro le
+       card nuove si aggiungerebbero a quelle vecchie.
+       removeChild in ciclo toglie anche i listener collegati ai
+       nodi rimossi, quindi non restano riferimenti in memoria. */
+    while (projectsContainer.firstChild) {
+      projectsContainer.removeChild(projectsContainer.firstChild);
+    }
+
+    /* Nessun risultato: meglio un messaggio esplicito che una
+       pagina vuota, che sembrerebbe un errore di caricamento. */
+    if (projects.length === 0) {
+      const emptyMessage = document.createElement("div");
+      emptyMessage.className = "no-results";
+      emptyMessage.innerHTML = `<p>No projects found matching your criteria.</p>`;
+      projectsContainer.appendChild(emptyMessage);
+      return;
+    }
+
+    projects.forEach((project) => {
+      const card = document.createElement("div");
+      card.className = "card project-card";
+
+      /* dataset scrive un attributo data-url sull'elemento. Il dato
+         resta attaccato alla card e lo si puo' rileggere nel
+         listener senza cercare il progetto nell'array. */
+      card.dataset.url = project.html_url;
+
+      /* I topics diventano tag: map li trasforma in stringhe HTML e
+         join("") le unisce. Senza join, l'array verrebbe convertito
+         in stringa con le virgole tra un elemento e l'altro. */
+      card.innerHTML = `
+        <div class="project-card__media project-card__media--compact">
+          <img src="${project.image || 'assets/profile.png'}" alt="${project.name} preview" loading="lazy">
+        </div>
+        <div class="project-card__content">
+          <h3 class="card__title">${project.name}</h3>
+          <p class="card__description">${project.description}</p>
+          <div class="card__meta">
+            <span class="card__language">${project.language}</span>
+          </div>
+          <div class="card__topics">
+            ${project.topics
+              .map((topic) => `<span class="tag">${topic}</span>`)
+              .join("")}
+          </div>
+          <a href="${project.html_url}"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="card__link">
+            View on GitHub
+          </a>
+        </div>
+      `;
+
+      projectsContainer.appendChild(card);
+    });
+  };
+
+  /* ============================================================
+     RICERCA E FILTRO
+     ============================================================ */
+
+  /**
+   * Applica insieme il testo cercato e il linguaggio scelto.
+   * I due criteri lavorano sempre sull'array completo, non sul
+   * risultato precedente: altrimenti cancellare una lettera dalla
+   * ricerca non farebbe piu' ricomparire i progetti esclusi.
+   */
+  const applyFilters = () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const selectedLanguage = filterLanguage.value;
+
+    /* filter costruisce un nuovo array con i soli elementi per cui
+       la funzione restituisce true, e lascia intatto l'originale. */
+    const filtered = allProjects.filter((project) => {
+      /* Confronto in minuscolo su entrambi i lati, cosi' la ricerca
+         non distingue maiuscole e minuscole. */
+      const matchesSearch =
+        project.name.toLowerCase().includes(searchTerm) ||
+        project.description.toLowerCase().includes(searchTerm);
+
+      /* "All" e' il valore che disattiva il filtro sul linguaggio. */
+      const matchesLanguage =
+        selectedLanguage === "All" || project.language === selectedLanguage;
+
+      /* Servono entrambe le condizioni: i filtri si sommano. */
+      return matchesSearch && matchesLanguage;
+    });
+
+    renderProjects(filtered);
+  };
+
+  /* input scatta a ogni modifica del campo, quindi la lista si
+     aggiorna mentre si scrive. */
+  searchInput.addEventListener("input", applyFilters);
+
+  /* change su una select scatta alla scelta dell'opzione, non
+     mentre si scorre la tendina. */
+  filterLanguage.addEventListener("change", applyFilters);
+
+  /* ============================================================
+     CLICK SULLE CARD
+
+     Un solo listener sul contenitore invece di uno per card. Le
+     card vengono ricreate a ogni filtro: con i listener sulle
+     singole card andrebbero ricollegati ogni volta, mentre il
+     contenitore resta sempre lo stesso.
+     ============================================================ */
+
+  projectsContainer.addEventListener("click", (event) => {
+    /* event.target e' l'elemento preciso cliccato, che puo' essere
+       il titolo o l'immagine dentro la card. closest risale i
+       genitori fino a trovare la card, o restituisce null. */
+    const card = event.target.closest(".project-card");
+
+    /* Click a vuoto sullo spazio tra le card. */
+    if (!card) return;
+
+    /* Sul link lasciamo fare al browser: deve aprire GitHub, non
+       selezionare la card. */
+    if (event.target.tagName === "A") return;
+
+    card.classList.toggle("card--active");
+  });
+
+  /* Avvio: tutto il resto e' gia' collegato e reagisce da solo. */
+  loadProjects();
+});
+
